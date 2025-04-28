@@ -9,6 +9,7 @@ import TrashedFiles from "./TrashedFiles";
 
 const Dashboard = () => {
   const [files, setFiles] = useState([]);
+  const [folders, setFolders] = useState([]);
   const { user } = useAuth();
 
   const handleDrop = (e) => {
@@ -56,6 +57,7 @@ const Dashboard = () => {
       formData.append(`accessTypes[${index}]`, item.accessType);
     });
     formData.append("user_id", user.id); // Assuming API expects user_id
+    formData.append("folder_id", selectedFolderId ?? 0); // Assuming API expects folder_id
 
     try {
       setIsUploading(true);
@@ -71,7 +73,7 @@ const Dashboard = () => {
       if (res.ok) {
         toast.success("Files uploaded successfully!");
         setFiles([]); // Clear uploaded files
-        fetchFiles();
+        fetchFiles(selectedFolderId);
       } else {
         toast.error(result.message || "Failed to upload files.");
       }
@@ -84,8 +86,16 @@ const Dashboard = () => {
 
   const [historyFiles, setHistoryFiles] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedFolderName, setSelectedFolderName] = useState(null);
+  const [selectedFolderId, setSelectedFolderId] = useState(null);
 
-  const fetchFiles = async () => {
+  const handleFolderClick = (folderName, folderId) => {
+    setSelectedFolderName(folderName);
+    setSelectedFolderId(folderId);
+    fetchFiles(folderId);
+  };
+
+  const fetchFiles = async (folderId) => {
     try {
       setLoading(true);
       const response = await fetch(
@@ -95,13 +105,17 @@ const Dashboard = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ user_id: user.id }),
+          body: JSON.stringify({
+            user_id: user.id,
+            folder_id: folderId ?? 0,
+          }),
         }
       );
 
       const data = await response.json();
       if (data.status && data.files) {
         setHistoryFiles(data.files);
+        setFolders(data.folders || []);
       } else {
         console.error("No files found or error occurred");
       }
@@ -115,16 +129,24 @@ const Dashboard = () => {
   return (
     <div className="bg-gray-100 min-h-screen py-10 flex items-start justify-center space-x-2 px-2">
       <div className="w-full max-w-3xl flex flex-col gap-4">
-      <TrashedFiles trashedFiles={[]} />
-      <GetFilesHistory
-        userId={user.id}
-        fetchFiles={fetchFiles}
-        loading={loading}
-        files={historyFiles}
-      />
+        <GetFilesHistory
+          userId={user.id}
+          fetchFiles={fetchFiles}
+          loading={loading}
+          files={historyFiles}
+          folders={folders}
+          handleFolderClick={handleFolderClick}
+          selectedFolderName={selectedFolderName}
+          selectedFolderId={selectedFolderId}
+        />
       </div>
       <div className="p-6 max-w-4xl w-full mx-auto bg-white rounded-2xl shadow-lg sticky top-0 h-full">
-        <h1 className="text-2xl font-bold mb-6">Upload Files</h1>
+        <h1 className="select-none text-2xl font-bold mb-6 flex items-center">
+          Upload Files{" "}
+          {selectedFolderName && (
+            <p className="text-gray-600 ml-3 f-13">/{selectedFolderName}</p>
+          )}
+        </h1>
 
         {/* Drag & Drop Zone */}
         <div
@@ -133,8 +155,8 @@ const Dashboard = () => {
           className="border-4 border-dashed border-gray-300 rounded-2xl p-12 text-center cursor-pointer hover:bg-gray-50 transition mb-6"
           onClick={() => document.getElementById("fileInput").click()}
         >
-          <UploadCloud className="mx-auto h-12 w-12 text-blue-500 mb-2" />
-          <p className="text-gray-600">
+          <UploadCloud className="mx-auto h-12 w-12 text-[#092e46] mb-2" />
+          <p className="text-gray-600 select-none">
             Drag & drop files here or click to choose
           </p>
           <input
@@ -185,37 +207,7 @@ const Dashboard = () => {
                   />
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    Access Type
-                  </label>
-                  <div className="flex items-center gap-6 mt-1">
-                    <label className="flex items-center gap-2">
-                      <input
-                        type="radio"
-                        name={`accessType-${index}`}
-                        value="download"
-                        checked={item.accessType === "download"}
-                        onChange={() =>
-                          updateFile(index, "accessType", "download")
-                        }
-                      />
-                      Download
-                    </label>
-                    <label className="flex items-center gap-2">
-                      <input
-                        type="radio"
-                        name={`accessType-${index}`}
-                        value="view-only"
-                        checked={item.accessType === "view-only"}
-                        onChange={() =>
-                          updateFile(index, "accessType", "view-only")
-                        }
-                      />
-                      View-Only
-                    </label>
-                  </div>
-                </div>
+                
               </div>
             </motion.div>
           ))}

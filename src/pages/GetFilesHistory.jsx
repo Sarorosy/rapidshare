@@ -10,10 +10,13 @@ import {
   Trash2,
   EllipsisIcon,
   Check,
+  ArrowDownToLine,
 } from "lucide-react";
 import toast from "react-hot-toast";
 import { ScaleLoader } from "react-spinners";
 import dayjs from "dayjs";
+import upleft from '../assets/upleft.svg';
+
 import ConfirmationModal from "../components/ConfirmationModal";
 const GetFilesHistory = ({
   userId,
@@ -26,7 +29,7 @@ const GetFilesHistory = ({
   selectedFolderId,
 }) => {
   useEffect(() => {
-    if (userId) fetchFiles();
+    if (userId) fetchFiles(0);
   }, [userId]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -67,6 +70,7 @@ const GetFilesHistory = ({
       const data = await response.json();
       if (data.status) {
         toast.success(data.message || "File Access Updated");
+        fetchFiles(selectedFolderId)
       } else {
         toast.error(data.message || "Error while updating access");
       }
@@ -267,7 +271,7 @@ const GetFilesHistory = ({
           body: JSON.stringify({ folder_id: selectedFolder, user_id: userId }),
         }
       );
-      const data = response.json();
+      const data = await response.json();
       if (data.status) {
         toast.success(data.message || "Folder Deleting Successfully");
         fetchFiles(0);
@@ -276,6 +280,8 @@ const GetFilesHistory = ({
       }
     } catch (err) {
       console.log("errror while deleting folder : " + err);
+    }finally{
+      setDeleteConfirmationOpen(false);
     }
   };
 
@@ -337,6 +343,7 @@ const GetFilesHistory = ({
             <input
               type="text"
               value={folderName}
+              maxLength={30}
               onChange={(e) => setFolderName(e.target.value)}
               placeholder="Enter folder name"
               className="w-full border border-gray-300 rounded-lg p-3 mb-4 focus:outline-none focus:ring-2 focus:ring-[#092e46]"
@@ -408,13 +415,21 @@ const GetFilesHistory = ({
         </h2>
 
         <div className="flex gap-3">
-          {!selectedFolderName && (
+          {!selectedFolderName ? (
             <button
               onClick={() => setIsModalOpen(true)}
               className="flex items-center text-sm text-white bg-green-600 px-4 py-2 rounded-lg hover:bg-green-700 transition"
             >
               <FolderPlus className="w-4 h-4 mr-1" />
               New Folder
+            </button>
+          ) : (
+            <button
+              onClick={()=>{handleFolderClick(null, 0)}}
+              className="flex items-center text-sm text-black bg-gray-100 px-4 py-2 rounded-lg hover:bg-gray-200 transition border"
+            >
+              <img src={upleft} className="w-4 h-4 mr-1 rotate-90" />
+              Back
             </button>
           )}
 
@@ -579,9 +594,9 @@ const GetFilesHistory = ({
                         ? file.file_url
                         : undefined
                     }
-                    className="text-sm text-white bg-[#092e46] px-4 py-2 rounded-lg hover:bg-[#06436b] transition-colors"
+                    className="flex items-center justify-center text-sm text-white bg-[#092e46] px-3 py-1.5 f-12 rounded-lg hover:bg-[#06436b] transition-colors"
                   >
-                    {file.access_type === "download" ? "Download" : "View"}
+                   <ArrowDownToLine size={15}className="mr-2" /> {file.access_type === "download" ? "Download" : "View"}
                   </a>
                 </div>
                 {activeManageAccess === file.id && (

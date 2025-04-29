@@ -19,16 +19,7 @@ export default function UserLayout() {
           © {new Date().getFullYear()} RapidShare. All rights reserved.
         </p>
         <div className="flex space-x-6 mt-4 md:mt-0 text-sm">
-          <p 
-          onClick={() => navigate("/privacy-policy")}
-          className="cursor-pointer">
-            Privacy Policy
-          </p>
-          <p 
-          onClick={() => navigate("/terms-of-service")}
-          className="cursor-pointer">
-            Terms of Service
-          </p>
+          
         </div>
       </div>
     </div>

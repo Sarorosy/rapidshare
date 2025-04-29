@@ -140,6 +140,7 @@ const Dashboard = () => {
           selectedFolderId={selectedFolderId}
         />
       </div>
+      
       <div className="p-6 max-w-4xl w-full mx-auto bg-white rounded-2xl shadow-lg sticky top-0 h-full">
         <h1 className="select-none text-2xl font-bold mb-6 flex items-center">
           Upload Files{" "}
@@ -201,6 +202,7 @@ const Dashboard = () => {
                     type="text"
                     className="w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
                     value={item.filename}
+                    maxLength={40}
                     onChange={(e) =>
                       updateFile(index, "filename", e.target.value)
                     }

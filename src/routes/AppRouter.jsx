@@ -18,8 +18,6 @@ export default function AppRouter() {
         <Route element={<PrivateRoute />}>
           <Route element={<UserLayout />}>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-of-service" element={<TermsOfService />} />
           </Route>
         </Route>
       </Routes>

@@ -6,6 +6,7 @@ import Dashboard from "../pages/Dashboard";
 import PrivacyPolicy from "../pages/PrivacyPolicy";
 import TermsOfService from "../pages/TermsOfService";
 import ScrollToTop from "../components/ScrollToTop";
+import ForgotUsername from "../pages/ForgotUsername";
 
 export default function AppRouter() {
   return (
@@ -14,6 +15,7 @@ export default function AppRouter() {
       <Routes>
         {/* Public Restaurant Routes (NO layout) */}
         <Route path="/login" element={<Login />} />
+        <Route path="/forgot-username" element={<ForgotUsername />} />
 
         <Route element={<PrivateRoute />}>
           <Route element={<UserLayout />}>

@@ -6,7 +6,7 @@ import { ScaleLoader } from "react-spinners";
 import { useAuth } from "../utils/idb";
 import { useNavigate } from "react-router-dom";
 export default function Login() {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [showOtp, setShowOtp] = useState(false);
   const [submitBtnDisabled, setSubmitBtnDisabled] = useState(false);
   const [otpBtnDisabled, setOtpBtnDisabled] = useState(false);
@@ -19,8 +19,8 @@ export default function Login() {
     e.preventDefault();
     setSubmitBtnDisabled(true); // Disable the button to prevent multiple submissions
 
-    if (!email) {
-      toast.error("Please enter a valid email address.");
+    if (!username) {
+      toast.error("Please enter username.");
       return;
     }
 
@@ -32,7 +32,7 @@ export default function Login() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ email }),
+          body: JSON.stringify({ username }),
         }
       );
 
@@ -70,7 +70,7 @@ export default function Login() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ email, otp: otpValue }),
+          body: JSON.stringify({ username, otp: otpValue }),
         }
       );
 
@@ -123,11 +123,11 @@ export default function Login() {
         {!showOtp ? (
           <form onSubmit={handleEmailSubmit} className="space-y-3">
             <input
-              type="email"
-              placeholder="Enter your email"
+              type="text"
+              placeholder="Enter Username"
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#092e46]"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               required
             />
             <button
@@ -193,6 +193,10 @@ export default function Login() {
             </button>
           </div>
         )}
+
+        <p 
+        onClick={()=>navigate("/forgot-username")}
+        className="cursor-pointer text-center text-sm text-[#092e46] font-medium">Forgot UserName</p>
       </div>
     </div>
   );

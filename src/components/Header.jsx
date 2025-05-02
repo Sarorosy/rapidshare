@@ -132,6 +132,8 @@ export default function Header() {
             <div className="relative" ref={notifRef}>
               <button
                 onClick={handleNotifClick}
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content="Notifications"
                 className="relative p-2 bg-gray-100 rounded-full hover:bg-blue-100 transition"
               >
                 <Bell className="w-6 h-6 text-[#092e46]" />
@@ -169,10 +171,12 @@ export default function Header() {
             <div className="flex items-center" ref={dropdownRef}>
               <button
                 onClick={() => setDropdownOpen(!dropdownOpen)}
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content={user.email}
                 className="flex items-center px-3 py-2 rounded-md bg-gray-100 text-black  transition mr-3"
               >
                 <CircleUserRound className="w-4 h-4 mr-2" />
-                <span>{user.email}</span>
+                <span>{user.username}</span>
               </button>
               <button
                 onClick={logout}

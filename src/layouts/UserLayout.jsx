@@ -18,28 +18,12 @@ export default function UserLayout() {
         </div>
       </main>
       <div className="border-t border-[#092e4650] bg-white text-[#092e46] px-4 py-3 relative flex items-center">
-  {/* Centered copyright */}
-  <p className="absolute left-1/2 transform -translate-x-1/2 text-sm text-[#092e46]">
-    © {new Date().getFullYear()} Rapid Collaborate. All Rights Reserved.
-  </p>
+        {/* Centered copyright */}
+        <p className="absolute left-1/2 transform -translate-x-1/2 text-sm text-[#092e46]">
+          © {new Date().getFullYear()} Rapid Collaborate. All Rights Reserved.
+        </p>
 
-  {/* Right-aligned links */}
-  <div className="ml-auto flex space-x-6 text-sm">
-    <p
-      onClick={() => navigate("/terms-and-conditions")}
-      className="cursor-pointer hover:underline"
-    >
-      Terms and Conditions
-    </p>
-    <p
-      onClick={() => navigate("/cookie-policy")}
-      className="cursor-pointer hover:underline"
-    >
-      Cookie Policy
-    </p>
-  </div>
-</div>
-
+      </div>
     </div>
   );
 }

@@ -59,7 +59,7 @@ const GetFilesHistory = ({
         time: selectedDuration, // in days
       };
       const response = await fetch(
-        "https://dissertationindia.com/rapidshare/api/Api/updateAccess",
+        "https://rapidcollaborate.com/rapidshare/api/Api/updateAccess",
         {
           method: "POST",
           headers: {
@@ -105,7 +105,7 @@ const GetFilesHistory = ({
     try {
       setIsCreatingFolder(true);
       const response = await fetch(
-        "https://dissertationindia.com/rapidshare/api/Api/createFolder",
+        "https://rapidcollaborate.com/rapidshare/api/Api/createFolder",
         {
           method: "POST",
           headers: {
@@ -194,7 +194,7 @@ const GetFilesHistory = ({
   const handleDeleteFile = async () => {
     try {
       const response = await fetch(
-        "https://dissertationindia.com/rapidshare/api/Api/deleteFile",
+        "https://rapidcollaborate.com/rapidshare/api/Api/deleteFile",
         {
           method: "POST",
           headers: {
@@ -265,7 +265,7 @@ const GetFilesHistory = ({
   const deleteFolder = async () => {
     try {
       const response = await fetch(
-        "https://dissertationindia.com/rapidshare/api/Api/deleteFolder",
+        "https://rapidcollaborate.com/rapidshare/api/Api/deleteFolder",
         {
           method: "POST",
           headers: { "COntent-type": "application/json" },
@@ -294,7 +294,7 @@ const GetFilesHistory = ({
       }
       setEditing(true);
       const response = await fetch(
-        "https://dissertationindia.com/rapidshare/api/Api/updateFolderName",
+        "https://rapidcollaborate.com/rapidshare/api/Api/updateFolderName",
         {
           method: "POST",
           headers: {

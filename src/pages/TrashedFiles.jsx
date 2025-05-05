@@ -25,7 +25,7 @@ import toast from "react-hot-toast";
       try {
         setLoading(true);
         const response = await fetch(
-          "https://dissertationindia.com/rapidshare/api/Api/getTrashedFiles",
+          "https://rapidcollaborate.com/rapidshare/api/Api/getTrashedFiles",
           {
             method: "POST",
             headers: {
@@ -112,7 +112,7 @@ import toast from "react-hot-toast";
       try {
         setRestoringFiles((prev) => ({ ...prev, [fileId]: true })); // Set restoring state for the specific file
         const response = await fetch(
-          "https://dissertationindia.com/rapidshare/api/Api/restoreFile",
+          "https://rapidcollaborate.com/rapidshare/api/Api/restoreFile",
           {
             method: "POST",
             headers: {

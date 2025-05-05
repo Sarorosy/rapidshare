@@ -40,7 +40,7 @@ export default function Header() {
     try {
       setNotiLoading(true);
       const res = await fetch(
-        "https://dissertationindia.com/rapidshare/api/Api/fetchNotifications",
+        "https://rapidcollaborate.com/rapidshare/api/Api/fetchNotifications",
         {
           method : "POST",
           headers : {
@@ -96,7 +96,7 @@ export default function Header() {
 
   const deleteNotification = async (notifId) =>{
     try{
-        const response = await fetch("https://dissertationindia.com/rapidshare/api/Api/deleteNotification",{
+        const response = await fetch("https://rapidcollaborate.com/rapidshare/api/Api/deleteNotification",{
             method:"POST",
             headers:{
                 "Content-type" : "application/json"

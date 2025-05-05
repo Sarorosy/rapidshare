@@ -14,7 +14,6 @@ export default function AppRouter() {
   return (
     <Router basename="/rapidshare">
       <ScrollToTop />
-      <CookiePopup />
       <Routes>
         {/* Public Restaurant Routes (NO layout) */}
         <Route path="/login" element={<Login />} />
@@ -23,8 +22,6 @@ export default function AppRouter() {
         <Route element={<PrivateRoute />}>
           <Route element={<UserLayout />}>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-             <Route path="/cookie-policy" element={<CookiePolicy />} />
           </Route>
         </Route>
       </Routes>

@@ -19,7 +19,7 @@ const ForgotUsername = () => {
     try {
         setFinding(true);
       const response = await fetch(
-        `https://dissertationindia.com/rapidshare/api/Api/getAllAccounts`,
+        `https://rapidcollaborate.com/rapidshare/api/Api/getAllAccounts`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

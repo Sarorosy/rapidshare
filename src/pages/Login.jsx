@@ -26,7 +26,7 @@ export default function Login() {
 
     try {
       const response = await fetch(
-        "https://dissertationindia.com/rapidshare/api/Api/login",
+        "https://rapidcollaborate.com/rapidshare/api/Api/login",
         {
           method: "POST",
           headers: {
@@ -64,7 +64,7 @@ export default function Login() {
       }
 
       const response = await fetch(
-        "https://dissertationindia.com/rapidshare/api/Api/verifyOtp",
+        "https://rapidcollaborate.com/rapidshare/api/Api/verifyOtp",
         {
           method: "POST",
           headers: {

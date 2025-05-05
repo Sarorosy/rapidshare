@@ -14,7 +14,7 @@ const FileSideBar = ({ onClose, fileId, userId, selectionNotification, deleteNot
     try {
       setLoading(true);
       const response = await fetch(
-        "https://dissertationindia.com/rapidshare/api/Api/getFile",
+        "https://rapidcollaborate.com/rapidshare/api/Api/getFile",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -85,7 +85,7 @@ const FileSideBar = ({ onClose, fileId, userId, selectionNotification, deleteNot
   const handleDeleteFile = async () => {
     try {
       const response = await fetch(
-        "https://dissertationindia.com/rapidshare/api/Api/deleteFile",
+        "https://rapidcollaborate.com/rapidshare/api/Api/deleteFile",
         {
           method: "POST",
           headers: {
@@ -130,7 +130,7 @@ const FileSideBar = ({ onClose, fileId, userId, selectionNotification, deleteNot
         time: selectedDuration, // in days
       };
       const response = await fetch(
-        "https://dissertationindia.com/rapidshare/api/Api/updateAccess",
+        "https://rapidcollaborate.com/rapidshare/api/Api/updateAccess",
         {
           method: "POST",
           headers: {

@@ -62,7 +62,7 @@ const Dashboard = () => {
     try {
       setIsUploading(true);
       const res = await fetch(
-        "https://dissertationindia.com/rapidshare/api/Api/uploadAllFiles",
+        "https://rapidcollaborate.com/rapidshare/api/Api/uploadAllFiles",
         {
           method: "POST",
           body: formData,
@@ -99,7 +99,7 @@ const Dashboard = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        "https://dissertationindia.com/rapidshare/api/Api/getFilesHistory",
+        "https://rapidcollaborate.com/rapidshare/api/Api/getFilesHistory",
         {
           method: "POST",
           headers: {

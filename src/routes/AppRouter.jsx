@@ -3,15 +3,18 @@ import Login from "../pages/Login";
 import PrivateRoute from "./PrivateRoute";
 import UserLayout from "../layouts/UserLayout";
 import Dashboard from "../pages/Dashboard";
-import PrivacyPolicy from "../pages/PrivacyPolicy";
-import TermsOfService from "../pages/TermsOfService";
+import PrivacyPolicy from "../pages/CookiePolicy";
+import TermsAndConditions from "../pages/TermsAndConditions";
 import ScrollToTop from "../components/ScrollToTop";
 import ForgotUsername from "../pages/ForgotUsername";
+import CookiePopup from "../components/CookiePopup";
+import CookiePolicy from "../pages/CookiePolicy";
 
 export default function AppRouter() {
   return (
     <Router basename="/rapidshare">
       <ScrollToTop />
+      <CookiePopup />
       <Routes>
         {/* Public Restaurant Routes (NO layout) */}
         <Route path="/login" element={<Login />} />
@@ -20,8 +23,8 @@ export default function AppRouter() {
         <Route element={<PrivateRoute />}>
           <Route element={<UserLayout />}>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/terms-and-conditions" element={<PrivacyPolicy />} />
-             <Route path="/cookie-policy" element={<TermsOfService />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+             <Route path="/cookie-policy" element={<CookiePolicy />} />
           </Route>
         </Route>
       </Routes>

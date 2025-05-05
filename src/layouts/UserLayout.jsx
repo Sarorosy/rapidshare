@@ -9,12 +9,12 @@ export default function UserLayout() {
   return (
     <div className="h-screen flex flex-col bg-gray-50 w-full">
       <Header />
-      <main className="flex-grow w-full overflow-y-auto p-4">
+      <main className="flex-grow w-full overflow-y-auto p-4" id="scroll-container">
         <div className="bg-white rounded-2xl shadow-md p-4 min-h-full">
           <Outlet />
         </div>
       </main>
-      <div className="border-t border-[#092e4650] bg-white text-[#092e46] px-4 py-3 flex flex-col md:flex-row justify-between items-center">
+      <div className="border-t border-[#092e4650] bg-white text-[#092e46] px-4 py-3 flex flex-col md:flex-row justify-center items-center">
         <p className="text-[#092e46] text-sm">
           © {new Date().getFullYear()} RapidShare. All rights reserved.
         </p>

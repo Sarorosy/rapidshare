@@ -5,8 +5,14 @@ const ScrollToTop = () => {
     const { pathname } = useLocation();
 
     useEffect(() => {
-        window.scrollTo(0, 0); // Scrolls to the top of the page
-    }, [pathname]);
+        const scrollContainer = document.getElementById("scroll-container");
+        if (scrollContainer) {
+          scrollContainer.scrollTo(0, 0);
+        } else {
+          window.scrollTo(0, 0);
+        }
+      }, [pathname]);
+      
 
     return null;
 };

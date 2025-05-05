@@ -50,8 +50,8 @@ const ForgotUsername = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#092e4652] px-2">
-      <div className="bg-white rounded-2xl shadow-xl px-6 py-5 w-full max-w-sm space-y-5">
+    <div className="min-h-screen flex items-center justify-center bg-[#fff] px-2">
+      <div className="bg-white rounded-2xl  px-6 py-5 w-full max-w-sm space-y-5 border border-gray-300">
         {/* Back Arrow */}
         <button
           onClick={() => navigate("/login")}
@@ -66,11 +66,11 @@ const ForgotUsername = () => {
           {/* Email Input */}
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Enter your email
+              Enter Your Email
             </label>
             <input
               type="email"
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#092e46]"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#D7763D]"
               placeholder="example@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -81,10 +81,12 @@ const ForgotUsername = () => {
           <button
             onClick={handleFind}
             disabled={finding}
-            className="flex items-center justify-center w-full bg-[#092e46] text-white rounded-lg py-2  transition"
+            className="w-[35%]  ml-auto font-semibold text-sm flex items-center justify-center w-full bg-[#D7763D] text-white rounded py-1  transition"
           >
-            Find Accounts
-
+            {!finding && ( 
+              <span>Find Accounts</span>
+            )}
+            
             {finding && (
                 <div className="ml-2">
                   <ScaleLoader
@@ -101,7 +103,7 @@ const ForgotUsername = () => {
           {/* Accounts List */}
           {accounts.length > 0 && (
             <div className="mt-6 space-y-4">
-              <h2 className="text-sm text-gray-500 mb-2">Usernames found:</h2>
+              <h2 className="text-sm text-gray-500 mb-2">Usernames Found</h2>
               {accounts.map((account, index) => (
                 <div
                   key={account.id || index}

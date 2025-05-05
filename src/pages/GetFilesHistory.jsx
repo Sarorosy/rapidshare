@@ -11,6 +11,7 @@ import {
   EllipsisIcon,
   Check,
   ArrowDownToLine,
+  Download,
 } from "lucide-react";
 import toast from "react-hot-toast";
 import { ScaleLoader } from "react-spinners";
@@ -280,7 +281,7 @@ const GetFilesHistory = ({
       }
     } catch (err) {
       console.log("errror while deleting folder : " + err);
-    }finally{
+    } finally {
       setDeleteConfirmationOpen(false);
     }
   };
@@ -418,15 +419,15 @@ const GetFilesHistory = ({
           {!selectedFolderName ? (
             <button
               onClick={() => setIsModalOpen(true)}
-              className="flex items-center text-sm text-white bg-green-600 px-4 py-2 rounded-lg hover:bg-green-700 transition"
+              className="flex items-center text-sm text-white bg-green-600 px-2 py-1 rounded hover:bg-green-700 transition"
             >
               <FolderPlus className="w-4 h-4 mr-1" />
               New Folder
             </button>
           ) : (
             <button
-              onClick={()=>{handleFolderClick(null, 0)}}
-              className="flex items-center text-sm text-black bg-gray-100 px-4 py-2 rounded-lg hover:bg-gray-200 transition border"
+              onClick={() => { handleFolderClick(null, 0) }}
+              className="flex items-center text-sm text-black bg-gray-100 px-2 py-1 rounded-lg hover:bg-gray-200 transition border"
             >
               <img src={upleft} className="w-4 h-4 mr-1 rotate-90" />
               Back
@@ -468,55 +469,55 @@ const GetFilesHistory = ({
       {loading
         ? renderSkeleton()
         : folders.length > 0 &&
-          !selectedFolderName && (
-            <>
-              <div className="grid grid-cols-1 my-1 px-1 space-y-2">
-                {folders.map((folder) => (
-                  <div
-                    key={folder.id}
-                    onDoubleClick={() =>
-                      handleFolderClick(folder.name, folder.id)
-                    }
-                    className="relative cursor-pointer flex items-center justify-start bg-gray-50 border border-gray-200 rounded-xl p-4 hover:shadow-sm transition"
-                  >
-                    <div className="h-6 w-6 text-[#092e46]  rounded-full flex items-center justify-center">
-                      <FolderClosed size={24} />
-                    </div>
-                    <h3 className="text-lg font-semibold text-gray-800 ml-2 select-none">
-                      {folder.name}
-                    </h3>
-                    <button
-                      onClick={() => handleOptionClick(folder.id, folder.name)}
-                      className="text-gray-600 hover:text-gray-900 ml-auto border px-1 py-0.5 bg-gray-50 rounded-md hover:bg-white"
-                    >
-                      <EllipsisIcon size={20} />
-                    </button>
-
-                    {/* Floating options */}
-                    {isOptionsVisible && selectedFolder === folder.id && (
-                      <div
-                        ref={optionsRef}
-                        className="absolute right-4 top-14 w-36 bg-white border rounded-md shadow-lg z-10 p-2"
-                      >
-                        <button
-                          onClick={handleRenameFolder}
-                          className="block w-full text-left text-sm p-2 hover:bg-gray-100"
-                        >
-                          Rename Folder
-                        </button>
-                        <button
-                          onClick={handleDeleteFolder}
-                          className="block w-full text-left text-sm text-red-500 p-2 hover:bg-gray-100"
-                        >
-                          Delete Folder
-                        </button>
-                      </div>
-                    )}
+        !selectedFolderName && (
+          <>
+            <div className="grid grid-cols-1 my-1 px-1 space-y-2">
+              {folders.map((folder) => (
+                <div
+                  key={folder.id}
+                  onDoubleClick={() =>
+                    handleFolderClick(folder.name, folder.id)
+                  }
+                  className="relative cursor-pointer flex items-center justify-start bg-gray-50 border border-gray-200 rounded-xl p-4 hover:shadow-sm transition"
+                >
+                  <div className="h-6 w-6 text-[#092e46]  rounded-full flex items-center justify-center">
+                    <FolderClosed size={24} />
                   </div>
-                ))}
-              </div>
-            </>
-          )}
+                  <h3 className="text-lg font-semibold text-gray-800 ml-2 select-none">
+                    {folder.name}
+                  </h3>
+                  <button
+                    onClick={() => handleOptionClick(folder.id, folder.name)}
+                    className="text-gray-600 hover:text-gray-900 ml-auto border px-1 py-0.5 bg-gray-50 rounded-md hover:bg-white"
+                  >
+                    <EllipsisIcon size={20} />
+                  </button>
+
+                  {/* Floating options */}
+                  {isOptionsVisible && selectedFolder === folder.id && (
+                    <div
+                      ref={optionsRef}
+                      className="absolute right-4 top-14 w-36 bg-white border rounded-md shadow-lg z-10 p-2"
+                    >
+                      <button
+                        onClick={handleRenameFolder}
+                        className="block w-full text-left text-sm p-2 hover:bg-gray-100"
+                      >
+                        Rename Folder
+                      </button>
+                      <button
+                        onClick={handleDeleteFolder}
+                        className="block w-full text-left text-sm text-red-500 p-2 hover:bg-gray-100"
+                      >
+                        Delete Folder
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </>
+        )}
 
       {loading ? (
         renderSkeleton()
@@ -530,21 +531,26 @@ const GetFilesHistory = ({
             {files.map((file, idx) => (
               <div
                 key={idx}
-                className="select-none flex items-center justify-between bg-white border border-gray-200 rounded-xl px-4 py-2 f-12 hover:shadow-lg transition-all ease-in-out duration-300"
+                className="select-none flex items-center justify-between bg-white border border-gray-200 rounded-xl px-4 py-2 f-12 hover:shadow-lg transition-all ease-in-out duration-300 relative"
               >
                 <div className="flex items-center gap-4">
                   <FileText className="text-blue-500 w-8 h-8" />
                   <div>
-                    <p className="text-lg font-semibold text-gray-800">
-                      {file.file_name}
+                    <p className="text-lg font-semibold text-gray-800"
+                     data-tooltip-id={file.file_name.length > 30 ? "my-tooltip" : "dummy"}
+                     data-tooltip-content={file.file_name}
+                    >
+                      {file.file_name.length <= 30
+                        ? file.file_name
+                        : `${file.file_name.slice(0, 12)}...${file.file_name.slice(-15)}`}
                     </p>
+
                     <p className="f-12 text-gray-500 capitalize my-2">
                       <span
-                        className={`${
-                          file.access_type === "download"
+                        className={`${file.access_type === "download"
                             ? "text-green-500"
                             : "text-black bg-gray-100 border py-0.5 px-2 rounded-full"
-                        }`}
+                          }`}
                       >
                         {file.access_type}
                       </span>{" "}
@@ -569,65 +575,68 @@ const GetFilesHistory = ({
                   </div>
                 </div>
                 <div className="flex flex-col">
-                <div className="flex items-center space-x-3">
-                  {isPast(file.date) && (
-                    <button
-                      onClick={() => handleManageAccess(file.id)}
-                      className="f-12 text-blue-500 hover:text-blue-700 transition-colors"
-                    >
-                      Manage Access
-                    </button>
-                  )}
-                  <button
-                    onClick={() => handledeleteclick(file.id)} // Replace with actual trash logic
-                    className="f-12 text-red-500 hover:text-red-700 transition-colors"
-                  >
-                    <Trash2 size={18} />
-                  </button>
-
-                  <a
-                    href={file.file_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    download={
-                      file.access_type === "download"
-                        ? file.file_url
-                        : undefined
-                    }
-                    className="flex items-center justify-center text-sm text-white bg-[#092e46] px-3 py-1.5 f-12 rounded-lg hover:bg-[#06436b] transition-colors"
-                  >
-                   <ArrowDownToLine size={15}className="mr-2" /> {file.access_type === "download" ? "Download" : "View"}
-                  </a>
-                </div>
-                {activeManageAccess === file.id && (
-                  <div className="mt-3 flex items-center gap-3">
-                    <select
-                      value={selectedDuration}
-                      onChange={(e) => setSelectedDuration(e.target.value)}
-                      className="border border-gray-300 rounded-md px-3 py-1 text-sm "
-                    >
-                      <option value="">Select duration</option>
-                      {durations.map((d) => (
-                        <option key={d.value} value={d.value}>
-                          {d.label}
-                        </option>
-                      ))}
-                    </select>
+                  <div className="flex flex-col justify-end items-end space-x-3">
 
                     <button
-                      onClick={() => handleConfirmAccess(file.id)}
-                      className="bg-green-500 hover:bg-green-600 text-white p-1 rounded-full"
+                      onClick={() => handledeleteclick(file.id)} // Replace with actual trash logic
+                      className="f-12 text-red-500 hover:text-red-700 transition-colors  bg-red-100 rounded-full p-1 "
                     >
-                      <Check size={18} />
+                      <Trash2 size={18} />
                     </button>
-                    <button
-                      onClick={handleCancelAccess}
-                      className="bg-red-500 hover:bg-red-600 text-white p-1 rounded-full"
+
+                    <a
+                      href={file.file_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      download={
+                        file.access_type === "download"
+                          ? file.file_url
+                          : undefined
+                      }
+                      className="flex items-center justify-end text-sm text-white bg-[#D7763D] px-1 py-0.5 f-12 rounded hover:bg-[#bb4c0b] transition-colors mt-1"
                     >
-                      <X size={18} />
-                    </button>
+                      {/* <ArrowDownToLine size={15} className="mr-2" /> */}
+                      <Download size={15} className="mr-2" />
+                       {file.access_type === "download" ? "Download" : "View"}
+                    </a>
+                    {isPast(file.date) && !activeManageAccess && (
+                      <button
+                        onClick={() => handleManageAccess(file.id)}
+                        className="f-10 w-full  text-black-500 hover:text-black-700 transition-colors mt-2 border rounded-md px-1 py-1"
+                      >
+                        Manage Access
+                      </button>
+                    )}
                   </div>
-                )}
+                  {activeManageAccess === file.id && (
+                    <div className="mt-3 flex items-center gap-3">
+                      <select
+                        value={selectedDuration}
+                        onChange={(e) => setSelectedDuration(e.target.value)}
+                        className="border border-gray-300 rounded-md px-3 py-1 text-sm "
+                      >
+                        <option value="">Select duration</option>
+                        {durations.map((d) => (
+                          <option key={d.value} value={d.value}>
+                            {d.label}
+                          </option>
+                        ))}
+                      </select>
+
+                      <button
+                        onClick={() => handleConfirmAccess(file.id)}
+                        className="bg-green-500 hover:bg-green-600 text-white p-1 rounded-full"
+                      >
+                        <Check size={18} />
+                      </button>
+                      <button
+                        onClick={handleCancelAccess}
+                        className="bg-red-500 hover:bg-red-600 text-white p-1 rounded-full"
+                      >
+                        <X size={18} />
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}

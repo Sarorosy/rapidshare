@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ArrowLeft } from "lucide-react";
-import logo from "../assets/fileblue.svg";
+import logo from "../assets/logo-black.png";
 import toast from "react-hot-toast";
 import { ScaleLoader } from "react-spinners";
 import { useAuth } from "../utils/idb";
@@ -109,14 +109,14 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#092e4652] px-2">
-      <div className="bg-white rounded-2xl shadow-xl px-6 py-5 w-full max-w-sm space-y-5">
+    <div className="min-h-screen flex items-center justify-center bg-[#fff] px-2">
+      <div className="bg-white rounded-2xl  px-6 py-5 w-full max-w-sm space-y-5 border border-gray-300">
         <div className="flex items-center gap-3 justify-center mb-1">
-          <img src={logo} alt="RapidShare" className="h-8" />
-          <h1 className="text-2xl font-bold text-[#092e46]">RapidShare</h1>
+          <img src={logo} alt="RapidShare" className="h-14" />
+          {/* <h1 className="text-2xl font-bold text-[#092e46]">RapidShare</h1> */}
         </div>
 
-        <h2 className="text-xl font-semibold text-center text-gray-700">
+        <h2 className="text-xl font-semibold text-center text-gray-700 top-12">
           {showOtp ? "Verify OTP" : "Login"}
         </h2>
 
@@ -125,17 +125,22 @@ export default function Login() {
             <input
               type="text"
               placeholder="Enter Username"
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#092e46]"
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D7763D]"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
             />
+            <p 
+        onClick={()=>navigate("/forgot-username")}
+        className="cursor-pointer text-start text-sm text-[#092e46] font-medium hover:opacity-90 transition ms-1">Forgot Username</p>
             <button
               type="submit"
               disabled={submitBtnDisabled}
-              className="w-full flex items-center justify-center bg-[#092e46] text-white py-2 rounded-lg hover:opacity-90 transition"
+              className=" w-[21%]  ml-auto  flex items-center  font-semibold justify-center bg-[#D7763D] text-white text-sm py-1 rounded  hover:opacity-90 transition" 
             >
-              Send OTP
+               {!submitBtnDisabled && (
+             <span> Send OTP</span>
+               )}
               {submitBtnDisabled && (
                 <div className="ml-2">
                   <ScaleLoader
@@ -176,7 +181,7 @@ export default function Login() {
             <button 
             onClick={handleHandleOtpSubmit}
             disabled={otpBtnDisabled}
-            className="flex items-center justify-center w-full bg-[#092e46] text-white py-2 rounded-lg transition">
+            className="flex items-center font-semibold justify-center w-full bg-[#D7763D] text-white py-2 rounded-lg transition">
               Verify OTP
 
               {otpBtnDisabled && (
@@ -194,9 +199,6 @@ export default function Login() {
           </div>
         )}
 
-        <p 
-        onClick={()=>navigate("/forgot-username")}
-        className="cursor-pointer text-center text-sm text-[#092e46] font-medium">Forgot UserName</p>
       </div>
     </div>
   );

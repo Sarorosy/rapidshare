@@ -2,7 +2,7 @@ import { useAuth } from "../utils/idb.jsx";
 import { useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import { LogOut, CircleUserRound, Bell } from "lucide-react";
-import logo from "../assets/fileblue.svg";
+import logo from "../assets/logo-black.png";
 import NotificationLoader from "./NotificationLoader.jsx";
 import { AnimatePresence } from "framer-motion";
 import FileSideBar from "../pages/FileSideBar.jsx";
@@ -122,9 +122,9 @@ export default function Header() {
           }}
         >
           <span role="img" aria-label="plate">
-            <img src={logo} className="w-14 h-14 mr-2" />
+            <img src={logo} className="w-25 h-14" />
           </span>{" "}
-          RapidShare
+          
         </h1>
 
         {user ? (

@@ -142,12 +142,13 @@ const Dashboard = () => {
       </div>
       
       <div className="p-6 max-w-4xl w-full mx-auto bg-white rounded-2xl shadow-lg sticky top-0 h-full">
-        <h1 className="select-none text-2xl font-bold mb-6 flex items-center">
+        <h1 className="select-none text-2xl font-semibold mb-6 flex items-center">
           Upload Files{" "}
-          {selectedFolderName && (
-            <p className="text-gray-600 ml-3 f-13">/{selectedFolderName}</p>
-          )}
+          
         </h1>
+        {selectedFolderName && (
+            <p className="text-gray-600 my-3 f-11">Your files will be uploaded in the folder <span className="font-bold">{selectedFolderName}</span></p>
+          )}
 
         {/* Drag & Drop Zone */}
         <div
@@ -219,10 +220,10 @@ const Dashboard = () => {
             <button
               onClick={uploadAllFiles}
               disabled={isUploading}
-              className={`relative flex items-center justify-center gap-2 px-6 py-1 rounded-2xl text-white font-semibold transition-all duration-300 ${
+              className={`relative  flex items-center justify-center gap-2 px-3 py-1 rounded text-white font-semibold transition-all duration-300 ${
                 isUploading
-                  ? "bg-[#0d3b5a] opacity-70 cursor-not-allowed"
-                  : "bg-[#092e46] hover:bg-[#0d3b5a] active:scale-95"
+                  ? "bg-[#bb4c0b] opacity-70 cursor-not-allowed"
+                  : "bg-[#d7763d] hover:bg-[#bb4c0b] active:scale-95"
               }`}
             >
               {isUploading ? (

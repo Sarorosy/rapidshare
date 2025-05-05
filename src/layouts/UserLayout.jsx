@@ -14,20 +14,20 @@ export default function UserLayout() {
           <Outlet />
         </div>
       </main>
-      <div className="border-t border-[#092e4650] bg-white text-[#092e46] px-4 py-3 flex flex-col md:flex-row justify-between items-center">
+      <div className="border-t border-[#092e4650] bg-white text-[#092e46] px-4 py-3 flex flex-col md:flex-row justify-center items-center">
         <p className="text-[#092e46] text-sm">
-          © {new Date().getFullYear()} RapidShare. All rights reserved.
+          © {new Date().getFullYear()} Rapid Collaborate. All Rights Reserved.
         </p>
         <div className="flex space-x-6 mt-4 md:mt-0 text-sm">
         <p 
            onClick={() => navigate("/terms-and-conditions")}
            className="cursor-pointer">
-             Terms and Conditions
+             {/* Terms and Conditions */}
            </p>
            <p 
            onClick={() => navigate("/cookie-policy")}
            className="cursor-pointer">
-             Cookie Policy
+             {/* Cookie Policy */}
            </p>
         </div>
       </div>

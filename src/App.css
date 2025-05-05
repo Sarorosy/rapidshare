@@ -44,10 +44,13 @@ div::selection {
   font-size: 11px;
 }
 .f-12{
-  font-size: 12px;
+  font-size: 11px;
 }
 .f-13{
   font-size: 13px;
+}
+.f-17{
+  font-size: 15px;
 }
 .top-12{
   margin: 13px 0px 13px !important;

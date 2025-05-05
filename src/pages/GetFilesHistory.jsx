@@ -352,7 +352,7 @@ const GetFilesHistory = ({
             <button
               onClick={handleCreateFolder}
               disabled={isCreatingFolder}
-              className=" flex items-center justify-center w-full bg-[#092e46] text-white py-2 rounded-lg hover:bg-[#061f30] transition"
+              className=" flex items-center justify-center w-full bg-[#d7763d] text-white py-1.5 rounded hover:bg-[#d7763d] transition"
             >
               Create Folder
               {isCreatingFolder && (
@@ -392,7 +392,7 @@ const GetFilesHistory = ({
             <button
               onClick={handleupdateFolder}
               disabled={editing}
-              className=" flex items-center justify-center w-full bg-[#092e46] text-white py-2 rounded-lg hover:bg-[#061f30] transition"
+              className=" flex items-center justify-center w-full bg-[#bb4c0b] text-white py-1.5 rounded-lg hover:bg-[#d7763d] transition"
             >
               Update Folder
               {editing && (
@@ -411,7 +411,7 @@ const GetFilesHistory = ({
         </div>
       )}
       <div className="flex items-center justify-between mb-2">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-6">
           Your Uploaded Files
         </h2>
 
@@ -536,7 +536,7 @@ const GetFilesHistory = ({
                 <div className="flex items-center gap-4">
                   <FileText className="text-blue-500 w-8 h-8" />
                   <div>
-                    <p className="text-lg font-semibold text-gray-800"
+                    <p className="f-17 font-semibold text-gray-800"
                      data-tooltip-id={file.file_name.length > 30 ? "my-tooltip" : "dummy"}
                      data-tooltip-content={file.file_name}
                     >
@@ -593,18 +593,20 @@ const GetFilesHistory = ({
                           ? file.file_url
                           : undefined
                       }
-                      className="flex items-center justify-end text-sm text-white bg-[#D7763D] px-1 py-0.5 f-12 rounded hover:bg-[#bb4c0b] transition-colors mt-1"
+                      className="flex items-center font-semibold justify-end text-sm text-white bg-[#D7763D] px-1 py-0.5 f-12 rounded hover:bg-[#bb4c0b] transition-colors mt-1"
                     >
                       {/* <ArrowDownToLine size={15} className="mr-2" /> */}
-                      <Download size={15} className="mr-2" />
+                      <Download size={15} className="" />
                        {file.access_type === "download" ? "Download" : "View"}
                     </a>
                     {isPast(file.date) && !activeManageAccess && (
                       <button
                         onClick={() => handleManageAccess(file.id)}
-                        className="f-10 w-full  text-black-500 hover:text-black-700 transition-colors mt-2 border rounded-md px-1 py-1"
+                        // underline
+                        className="f-10 ms-2 justify-center w-full flex  text-black-500 hover:text-black-700 transition-colors mt-2  rounded-md px-1 py-1 border hover:border-[#D7763D]"
                       >
                         Manage Access
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right-icon lucide-move-right ms-2"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
                       </button>
                     )}
                   </div>

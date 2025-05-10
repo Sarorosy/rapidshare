@@ -328,7 +328,7 @@ const GetFilesHistory = ({
   };
 
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-lg max-w-3xl w-full mx-auto ">
+    <div className="bg-white p-3 rounded shadow max-w-3xl w-full mx-auto ">
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50">
           <div className="bg-white rounded-2xl shadow-lg w-96 p-6 relative">
@@ -411,7 +411,7 @@ const GetFilesHistory = ({
         </div>
       )}
       <div className="flex items-center justify-between mb-2">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+        <h2 className="text-lg font-semibold text-gray-800">
           Your Uploaded Files
         </h2>
 
@@ -419,9 +419,9 @@ const GetFilesHistory = ({
           {!selectedFolderName ? (
             <button
               onClick={() => setIsModalOpen(true)}
-              className="flex items-center text-sm text-white bg-green-600 px-2 py-1 rounded hover:bg-green-700 transition"
+              className="flex items-center btn btn-success btn-sm f-13"
             >
-              <FolderPlus className="w-4 h-4 mr-1" />
+              <FolderPlus className="mr-1" size={13} />
               New Folder
             </button>
           ) : (
@@ -438,16 +438,17 @@ const GetFilesHistory = ({
             onClick={() => {
               fetchFiles(selectedFolderId);
             }}
-            className={`flex items-center text-sm text-gray-500 hover:text-[#092e46] transition `}
+            className={`flex items-center btn btn-light btn-sm f-13`}
           >
             <RefreshCcw
-              className={`w-4 h-4 mr-1 ${loading && "animate-spin"}`}
+              size={13}
+              className={`mr-1 ${loading && "animate-spin"}`}
             />{" "}
             Refresh
           </button>
         </div>
       </div>
-      <div className="flex items-center space-x-2 text-sm text-gray-600 mb-3">
+      <div className="flex items-center space-x-2 text-sm text-gray-600 mb-3 mt-3 py-2 rounded px-2 bg-gray-100">
         {!selectedFolderName ? (
           <span className="cursor-pointer hover:text-blue-600 flex items-center space-x-1">
             <Home size={18} onClick={() => handleFolderClick(null, 0)} />
@@ -471,19 +472,19 @@ const GetFilesHistory = ({
         : folders.length > 0 &&
         !selectedFolderName && (
           <>
-            <div className="grid grid-cols-1 my-1 px-1 space-y-2">
+            <div className="grid grid-cols-1 my-1 space-y-2">
               {folders.map((folder) => (
                 <div
                   key={folder.id}
                   onDoubleClick={() =>
                     handleFolderClick(folder.name, folder.id)
                   }
-                  className="relative cursor-pointer flex items-center justify-start bg-gray-50 border border-gray-200 rounded-xl p-4 hover:shadow-sm transition"
+                  className="relative cursor-pointer flex items-center justify-start bg-gray-50 border border-gray-200 rounded-xl p-2 px-3 hover:shadow-sm transition"
                 >
                   <div className="h-6 w-6 text-[#092e46]  rounded-full flex items-center justify-center">
-                    <FolderClosed size={24} />
+                    <FolderClosed size={20} className="fill-orange-200" />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-800 ml-2 select-none">
+                  <h3 className="font-semibold text-gray-800 ml-2 select-none f-15">
                     {folder.name}
                   </h3>
                   <button
@@ -522,19 +523,19 @@ const GetFilesHistory = ({
       {loading ? (
         renderSkeleton()
       ) : files.length === 0 ? (
-        <div className="text-gray-500 text-center py-6">
+        <div className="text-gray-500 text-center py-6 p-3">
           You haven’t uploaded any files yet.
         </div>
       ) : (
         <>
-          <div className="space-y-2 h-full overflow-y-scroll px-1 sticky top-0">
+          <div className="space-y-2 h-full overflow-y-scroll sticky top-0 mt-3">
             {files.map((file, idx) => (
               <div
                 key={idx}
-                className="select-none flex items-center justify-between bg-white border border-gray-200 rounded-xl px-4 py-2 f-12 hover:shadow-lg transition-all ease-in-out duration-300 relative"
+                className="select-none flex items-center justify-between bg-white border border-gray-200 rounded-xl px-3 py-2 f-12 hover:shadow-lg transition-all ease-in-out duration-300 relative me-2"
               >
-                <div className="flex items-center gap-4">
-                  <FileText className="text-blue-500 w-8 h-8" />
+                <div className="flex items-start">
+                  <FileText className="text-blue-500 me-2" />
                   <div>
                     <p className="f-17 font-semibold text-gray-800"
                      data-tooltip-id={file.file_name.length > 30 ? "my-tooltip" : "dummy"}

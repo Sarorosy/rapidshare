@@ -189,7 +189,7 @@ const FileSideBar = ({ onClose, fileId, userId, selectionNotification, deleteNot
         )}
         {file && (
           <div
-          className="select-none flex items-center justify-between bg-white border border-gray-200 rounded-xl px-4 py-2 f-12 hover:shadow-lg transition-all ease-in-out duration-300 relative"
+          className="select-none flex items-center justify-between bg-white border border-gray-200 rounded-xl px-3 py-2 f-12 hover:shadow-lg transition-all ease-in-out duration-300 relative"
         >
           <div className="flex items-center gap-4">
             <FileText className="text-blue-500 w-8 h-8" />

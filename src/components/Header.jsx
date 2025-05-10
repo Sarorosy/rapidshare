@@ -114,7 +114,7 @@ export default function Header() {
 
   return (
     <header className="bg-white text-[#092e46] shadow-md">
-      <div className=" mx-auto flex items-center justify-between px-4 py-3">
+      <div className=" mx-auto flex items-center justify-between px-4 py-2">
         <h1
           className="text-2xl font-bold flex items-center cursor-pointer"
           onClick={() => {
@@ -122,7 +122,7 @@ export default function Header() {
           }}
         >
           <span role="img" aria-label="plate">
-            <img src={logo} className="w-25 h-14" />
+            <img src={logo} className="n-w-20" />
           </span>{" "}
           
         </h1>
@@ -136,7 +136,7 @@ export default function Header() {
                 data-tooltip-content="Notifications"
                 className="relative p-2 bg-gray-100 rounded-full hover:bg-blue-100 transition"
               >
-                <Bell className="w-6 h-6 text-[#092e46]" />
+                <Bell className="text-[#092e46]" size={15} />
                 {unreadCount > 0 && (
                   <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                     {unreadCount}
@@ -173,18 +173,18 @@ export default function Header() {
                 onClick={() => setDropdownOpen(!dropdownOpen)}
                 data-tooltip-id="my-tooltip"
                 data-tooltip-content={user.email}
-                className="flex items-center px-3 py-2 rounded-md bg-gray-100 text-black  transition mr-3"
+                className="flex items-center px-2 py-2 rounded-md bg-gray-100 text-black  transition mr-3"
               >
-                <CircleUserRound className="w-4 h-4 mr-2" />
-                <span>{user.username}</span>
+                <CircleUserRound className="mr-1 pt-1" size={20} />
+                <span className=" f-13">{user.username}</span>
               </button>
               <button
                 onClick={logout}
                 data-tooltip-id="my-tooltip"
                 data-tooltip-content="Logout"
-                className="flex hover:bg-red-500 hover:text-white items-center px-3 py-2 rounded-md bg-gray-100 text-black  transition"
+                className="flex hover:bg-red-500 hover:text-white items-center px-2 py-2 rounded-md bg-gray-100 text-black  transition"
               >
-                <LogOut className="w-4 h-4" />
+                <LogOut className="" size={13} />
               </button>
             </div>
           </div>

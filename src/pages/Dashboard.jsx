@@ -127,7 +127,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen py-10 flex items-start justify-center space-x-2 px-2">
+    <div className="bg-gray-100 flex items-start justify-center space-x-2 p-3 gap-3  min-h-full">
       <div className="w-full max-w-3xl flex flex-col gap-4">
         <GetFilesHistory
           userId={user.id}
@@ -141,8 +141,8 @@ const Dashboard = () => {
         />
       </div>
       
-      <div className="p-6 max-w-4xl w-full mx-auto bg-white rounded-2xl shadow-lg sticky top-0 h-full">
-        <h1 className="select-none text-2xl font-semibold mb-6 flex items-center">
+      <div className="p-3 max-w-4xl w-full mx-auto bg-white rounded shadow sticky top-0 h-full">
+        <h1 className="select-none text-lg font-semibold mb-3 flex items-center">
           Upload Files{" "}
           
         </h1>
@@ -171,7 +171,7 @@ const Dashboard = () => {
         </div>
 
         {/* File List */}
-        <div className="space-y-6 overflow-y-scroll max-h-[400px] py-2 px-1">
+        <div className={`space-y-6 overflow-y-scroll max-h-[400px] ${(files && files.length > 0) ? " py-2 px-1" : ""}`}>
           {files.map((item, index) => (
             <motion.div
               key={index}

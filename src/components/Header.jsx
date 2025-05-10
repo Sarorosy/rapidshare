@@ -114,7 +114,7 @@ export default function Header() {
 
   return (
     <header className="bg-white text-[#092e46] shadow-md">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+      <div className=" mx-auto flex items-center justify-between px-4 py-3">
         <h1
           className="text-2xl font-bold flex items-center cursor-pointer"
           onClick={() => {

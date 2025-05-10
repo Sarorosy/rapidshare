@@ -13,7 +13,7 @@ export default function Login() {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const navigate = useNavigate();
 
-  const {login} = useAuth();
+  const { login } = useAuth();
 
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
@@ -52,7 +52,7 @@ export default function Login() {
   };
 
   const handleHandleOtpSubmit = async (e) => {
-    try{
+    try {
       e.preventDefault();
       setOtpBtnDisabled(true); // Disable the button to prevent multiple submissions
 
@@ -79,18 +79,16 @@ export default function Login() {
       if (data.status) {
         toast.success("OTP verified successfully.");
         login(data.user); // Call the login function with the user data
-        navigate("/")
+        navigate("/");
       } else {
         toast.error(data.message || "Something went wrong.");
       }
-
-    
-    }catch(error){
+    } catch (error) {
       console.error("OTP Error:", error);
-    }finally{
+    } finally {
       setOtpBtnDisabled(false); // Re-enable the button after the request completes
     }
-  }
+  };
 
   const handleOtpChange = (value, index) => {
     if (/^\d?$/.test(value)) {
@@ -115,10 +113,11 @@ export default function Login() {
           <img src={logo} alt="RapidShare" className="h-14" />
           {/* <h1 className="text-2xl font-bold text-[#092e46]">RapidShare</h1> */}
         </div>
-
-        <h2 className="text-xl font-semibold text-center text-gray-700 top-12">
-          {showOtp ? "Verify OTP" : "Login"}
-        </h2>
+        {!showOtp && (
+          <h2 className="text-xl font-semibold text-center text-gray-700 top-12">
+            Login
+          </h2>
+        )}
 
         {!showOtp ? (
           <form onSubmit={handleEmailSubmit} className="space-y-3">
@@ -130,17 +129,18 @@ export default function Login() {
               onChange={(e) => setUsername(e.target.value)}
               required
             />
-            <p 
-        onClick={()=>navigate("/forgot-username")}
-        className="cursor-pointer text-start text-sm text-[#092e46] font-medium hover:opacity-90 transition ms-1">Forgot Username</p>
+            <p
+              onClick={() => navigate("/forgot-username")}
+              className="cursor-pointer hover:underline text-start text-sm text-[#092e46]  hover:opacity-90 transition ms-1"
+            >
+              Forgot Username ?
+            </p>
             <button
               type="submit"
               disabled={submitBtnDisabled}
-              className=" w-[21%]  ml-auto  flex items-center  font-semibold justify-center bg-[#D7763D] text-white text-sm py-1 rounded  hover:opacity-90 transition" 
+              className=" w-[21%]  ml-auto  flex items-center  font-semibold justify-center bg-[#D7763D] text-white text-sm py-1 rounded  hover:opacity-90 transition"
             >
-               {!submitBtnDisabled && (
-             <span> Send OTP</span>
-               )}
+              {!submitBtnDisabled && <span> Send OTP</span>}
               {submitBtnDisabled && (
                 <div className="ml-2">
                   <ScaleLoader
@@ -162,6 +162,9 @@ export default function Login() {
             >
               <ArrowLeft className="w-4 h-4 mr-1" /> Back
             </button>
+            <h2 className="text-xl font-semibold text-center text-gray-700 top-12">
+              Verify OTP
+            </h2>
             <p className="text-sm text-center text-gray-600">
               Enter the 6-digit OTP sent to your email
             </p>
@@ -178,12 +181,12 @@ export default function Login() {
                 />
               ))}
             </div>
-            <button 
-            onClick={handleHandleOtpSubmit}
-            disabled={otpBtnDisabled}
-            className="flex items-center font-semibold justify-center w-full bg-[#D7763D] text-white py-2 rounded-lg transition">
+            <button
+              onClick={handleHandleOtpSubmit}
+              disabled={otpBtnDisabled}
+              className="flex items-center font-semibold justify-center w-full bg-[#D7763D] text-white py-2 rounded-lg transition"
+            >
               Verify OTP
-
               {otpBtnDisabled && (
                 <div className="ml-2">
                   <ScaleLoader
@@ -198,7 +201,6 @@ export default function Login() {
             </button>
           </div>
         )}
-
       </div>
     </div>
   );

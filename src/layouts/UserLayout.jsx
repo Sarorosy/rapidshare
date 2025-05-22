@@ -8,7 +8,7 @@ export default function UserLayout() {
 
   return (
     <div className="h-screen flex flex-col bg-gray-50 w-full">
-      <Header />
+      
       <main
         className="flex-grow w-full overflow-y-auto p-4"
         id="scroll-container"

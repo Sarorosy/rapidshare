@@ -31,7 +31,7 @@ import toast from "react-hot-toast";
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ user_id: user.id }),
+            body: JSON.stringify({ user_id: user?.id }),
           }
         );
   
@@ -118,7 +118,7 @@ import toast from "react-hot-toast";
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ file_id: fileId, user_id: user.id }),
+            body: JSON.stringify({ file_id: fileId, user_id: user?.id }),
           }
         );
         const data = await response.json();

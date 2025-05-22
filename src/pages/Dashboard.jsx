@@ -56,7 +56,7 @@ const Dashboard = () => {
       formData.append(`filenames[${index}]`, item.filename);
       formData.append(`accessTypes[${index}]`, item.accessType);
     });
-    formData.append("user_id", user.id); // Assuming API expects user_id
+    formData.append("user_id", user?.id); // Assuming API expects user_id
     formData.append("folder_id", selectedFolderId ?? 0); // Assuming API expects folder_id
 
     try {
@@ -106,7 +106,7 @@ const Dashboard = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            user_id: user.id,
+            user_id: user?.id,
             folder_id: folderId ?? 0,
           }),
         }
@@ -130,7 +130,7 @@ const Dashboard = () => {
     <div className="bg-gray-100 flex items-start justify-center space-x-2 p-3 gap-3  min-h-full">
       <div className="w-full max-w-3xl flex flex-col gap-4">
         <GetFilesHistory
-          userId={user.id}
+          userId={user?.id}
           fetchFiles={fetchFiles}
           loading={loading}
           files={historyFiles}

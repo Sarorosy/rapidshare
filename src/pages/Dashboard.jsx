@@ -127,8 +127,8 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="bg-gray-100 flex items-start justify-center space-x-2 p-3 gap-3  min-h-full">
-      <div className="w-full max-w-3xl flex flex-col gap-4">
+    <div className="row min-h-full">
+      <div className="col-md-7 flex flex-col gap-4">
         <GetFilesHistory
           userId={user?.id}
           fetchFiles={fetchFiles}
@@ -141,8 +141,9 @@ const Dashboard = () => {
         />
       </div>
       
-      <div className="p-3 max-w-4xl w-full mx-auto bg-white rounded shadow sticky top-0 h-full">
-        <h1 className="select-none text-lg font-semibold mb-3 flex items-center">
+      <div className="col-md-5">
+      <div className="bg-white rounded shadow-sm sticky top-0  p-3">
+        <h1 className="select-none f-16 font-semibold mb-3 flex items-center">
           Upload Files{" "}
           
         </h1>
@@ -154,10 +155,10 @@ const Dashboard = () => {
         <div
           onDrop={handleDrop}
           onDragOver={(e) => e.preventDefault()}
-          className="border-4 border-dashed border-gray-300 rounded-2xl p-12 text-center cursor-pointer hover:bg-gray-50 transition mb-6"
+          className="border-4 border-dashed border-gray-300 rounded-2xl p-4 text-center cursor-pointer hover:bg-gray-50 transition"
           onClick={() => document.getElementById("fileInput").click()}
         >
-          <UploadCloud className="mx-auto h-12 w-12 text-[#092e46] mb-2" />
+          <UploadCloud className="mx-auto text-[#092e46] mb-2" size={30} />
           <p className="text-gray-600 select-none">
             Drag & drop files here or click to choose
           </p>
@@ -171,11 +172,11 @@ const Dashboard = () => {
         </div>
 
         {/* File List */}
-        <div className={`space-y-6 overflow-y-scroll max-h-[400px] ${(files && files.length > 0) ? " py-2 px-1" : ""}`}>
+        <div className={`space-y-6 overflow-y-auto max-h-[400px] ${(files && files.length > 0) ? " py-2 px-1" : ""}`}>
           {files.map((item, index) => (
             <motion.div
               key={index}
-              className="bg-white shadow-lg rounded-2xl p-4 border border-gray-200 relative"
+              className="bg-white shadow-sm rounded-xl py-2 px-3 border border-gray-200 relative mt-3"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
@@ -189,8 +190,8 @@ const Dashboard = () => {
                 <X className="h-4 w-4" />
               </button>
 
-              <div className="flex items-center gap-3 mb-3">
-                <FileText className="text-blue-500" />
+              <div className="flex items-center gap-1 mb-2">
+                <FileText className="text-blue-500" size={20} />
                 <div className="text-sm text-gray-600">{item.file.name}</div>
               </div>
 
@@ -201,7 +202,7 @@ const Dashboard = () => {
                   </label>
                   <input
                     type="text"
-                    className="w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full border rounded px-2 py-1 f-13 focus:outline-none focus:ring-2 focus:ring-blue-400"
                     value={item.filename}
                     maxLength={40}
                     onChange={(e) =>
@@ -216,14 +217,14 @@ const Dashboard = () => {
           ))}
         </div>
         {files.length > 0 && (
-          <div className="mt-6 text-right flex justify-end">
+          <div className="mt-2 text-right flex justify-end">
             <button
               onClick={uploadAllFiles}
               disabled={isUploading}
-              className={`relative  flex items-center justify-center gap-2 px-3 py-1 rounded text-white font-semibold transition-all duration-300 ${
+              className={`relative  flex items-center justify-center gap-2 px-2 py-1 f-13 rounded text-white font-semibold transition-all duration-300 ${
                 isUploading
-                  ? "bg-[#bb4c0b] opacity-70 cursor-not-allowed"
-                  : "bg-[#d7763d] hover:bg-[#bb4c0b] active:scale-95"
+                  ? "bg-[#72afa3] opacity-70 cursor-not-allowed"
+                  : "btn btn-success btn-sm active:scale-95"
               }`}
             >
               {isUploading ? (
@@ -243,6 +244,7 @@ const Dashboard = () => {
             </button>
           </div>
         )}
+      </div>
       </div>
     </div>
   );

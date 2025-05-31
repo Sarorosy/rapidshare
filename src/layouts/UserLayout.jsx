@@ -7,13 +7,13 @@ export default function UserLayout() {
   const navigate = useNavigate();
 
   return (
-    <div className="h-screen flex flex-col bg-gray-50 w-full">
+    <div className="h-screen flex flex-col w-full">
       
       <main
-        className="flex-grow w-full overflow-y-auto p-4"
+        className="flex-grow w-full overflow-y-auto"
         id="scroll-container"
       >
-        <div className="">
+        <div className="container m-0 max-w-[100%]">
           <Outlet />
         </div>
       </main>

@@ -63,3 +63,7 @@ div::selection {
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
 }
+
+.share-body-sec{
+  background-color: #f8f9fa;
+}

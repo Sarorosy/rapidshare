@@ -287,13 +287,13 @@ const FileSideBar = ({ onClose, fileId, userId, selectionNotification, deleteNot
                   onClick={() => handleConfirmAccess(file.id)}
                   className="bg-green-500 hover:bg-green-600 text-white p-1 rounded-full"
                 >
-                  <Check size={18} />
+                  <Check size={15} />
                 </button>
                 <button
                   onClick={handleCancelAccess}
                   className="bg-red-500 hover:bg-red-600 text-white p-1 rounded-full"
                 >
-                  <X size={18} />
+                  <X size={15} />
                 </button>
               </div>
             )}

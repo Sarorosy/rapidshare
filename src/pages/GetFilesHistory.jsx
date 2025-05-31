@@ -12,6 +12,7 @@ import {
   Check,
   ArrowDownToLine,
   Download,
+  MoveRightIcon,
 } from "lucide-react";
 import toast from "react-hot-toast";
 import { ScaleLoader } from "react-spinners";
@@ -328,45 +329,50 @@ const GetFilesHistory = ({
   };
 
   return (
-    <div className="bg-white p-3 rounded shadow max-w-3xl w-full mx-auto ">
+    <div className="bg-white p-3 rounded shadow-sm">
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50">
-          <div className="bg-white rounded-2xl shadow-lg w-96 p-6 relative">
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
-            >
-              <X size={20} />
-            </button>
-            <h2 className="text-xl font-bold mb-4 text-gray-800">
-              Create New Folder
-            </h2>
+          <div className="bg-white rounded shadow-lg w-96 p-3 relative">
+            
+            <div className="flex justify-between mb-3 items-end">
+              <h2 className="f-16 font-bold text-gray-800">
+                Create New Folder
+              </h2>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="btn btn-outline-danger btn-sm px-1"
+              >
+                <X size={13} />
+              </button>
+            </div>
             <input
               type="text"
               value={folderName}
               maxLength={30}
               onChange={(e) => setFolderName(e.target.value)}
               placeholder="Enter folder name"
-              className="w-full border border-gray-300 rounded-lg p-3 mb-4 focus:outline-none focus:ring-2 focus:ring-[#092e46]"
+              className="form-control form-control-sm mb-2"
             />
-            <button
-              onClick={handleCreateFolder}
-              disabled={isCreatingFolder}
-              className=" flex items-center justify-center w-full bg-[#d7763d] text-white py-1.5 rounded hover:bg-[#d7763d] transition"
-            >
-              Create Folder
-              {isCreatingFolder && (
-                <div className="ml-2">
-                  <ScaleLoader
-                    color="#ffffff"
-                    height={10}
-                    width={3}
-                    radius={2}
-                    margin={2}
-                  />
-                </div>
-              )}
-            </button>
+            <div className="flex justify-end">
+              <button
+                onClick={handleCreateFolder}
+                disabled={isCreatingFolder}
+                className=" btn btn-success btn-sm f-13"
+              >
+                Create Folder
+                {isCreatingFolder && (
+                  <div className="ml-2">
+                    <ScaleLoader
+                      color="#ffffff"
+                      height={10}
+                      width={3}
+                      radius={2}
+                      margin={2}
+                    />
+                  </div>
+                )}
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -411,7 +417,7 @@ const GetFilesHistory = ({
         </div>
       )}
       <div className="flex items-center justify-between mb-2">
-        <h2 className="text-lg font-semibold text-gray-800">
+        <h2 className="f-16 font-semibold text-gray-800">
           Your Uploaded Files
         </h2>
 
@@ -419,17 +425,17 @@ const GetFilesHistory = ({
           {!selectedFolderName ? (
             <button
               onClick={() => setIsModalOpen(true)}
-              className="flex items-center btn btn-success btn-sm f-13"
+              className="flex items-center btn btn-success btn-sm f-11"
             >
-              <FolderPlus className="mr-1" size={13} />
+              <FolderPlus className="mr-1" size={11} />
               New Folder
             </button>
           ) : (
             <button
               onClick={() => { handleFolderClick(null, 0) }}
-              className="flex items-center text-sm text-black bg-gray-100 px-2 py-1 rounded-lg hover:bg-gray-200 transition border"
+              className="flex items-center f-11 btn btn-outline-dark btn-sm "
             >
-              <img src={upleft} className="w-4 h-4 mr-1 rotate-90" />
+              <img src={upleft} className="w-3 h-3 mr-1 rotate-90" />
               Back
             </button>
           )}
@@ -438,10 +444,10 @@ const GetFilesHistory = ({
             onClick={() => {
               fetchFiles(selectedFolderId);
             }}
-            className={`flex items-center btn btn-light btn-sm f-13`}
+            className={`flex items-center btn btn-light btn-sm f-11`}
           >
             <RefreshCcw
-              size={13}
+              size={11}
               className={`mr-1 ${loading && "animate-spin"}`}
             />{" "}
             Refresh
@@ -479,12 +485,12 @@ const GetFilesHistory = ({
                   onDoubleClick={() =>
                     handleFolderClick(folder.name, folder.id)
                   }
-                  className="relative cursor-pointer flex items-center justify-start bg-gray-50 border border-gray-200 rounded-xl p-2 px-3 hover:shadow-sm transition"
+                  className="relative cursor-pointer flex items-center justify-start bg-gray-50 border border-gray-200 rounded-xl p-2 px-2 hover:shadow-sm transition"
                 >
-                  <div className="h-6 w-6 text-[#092e46]  rounded-full flex items-center justify-center">
+                  <div className="text-[#092e46]  rounded-full flex items-center justify-center">
                     <FolderClosed size={20} className="fill-orange-200" />
                   </div>
-                  <h3 className="font-semibold text-gray-800 ml-2 select-none f-15">
+                  <h3 className="font-semibold text-gray-800 ml-2 select-none f-14">
                     {folder.name}
                   </h3>
                   <button
@@ -528,16 +534,16 @@ const GetFilesHistory = ({
         </div>
       ) : (
         <>
-          <div className="space-y-2 h-full overflow-y-scroll sticky top-0 mt-3">
+          <div className="space-y-2 overflow-y-auto sticky top-0 mt-3">
             {files.map((file, idx) => (
               <div
                 key={idx}
-                className="select-none flex items-center justify-between bg-white border border-gray-200 rounded-xl px-3 py-2 f-12 hover:shadow-lg transition-all ease-in-out duration-300 relative me-2"
+                className="select-none flex items-start justify-between bg-white border border-gray-200 rounded-xl px-2 py-2 f-12 hover:shadow-lg transition-all ease-in-out duration-300 relative me-2"
               >
                 <div className="flex items-start">
-                  <FileText className="text-blue-500 me-2" />
+                  <FileText className="text-blue-500 me-1" size={20}  />
                   <div>
-                    <p className="f-17 font-semibold text-gray-800"
+                    <p className="f-13 font-semibold text-gray-800 mt-0.5"
                      data-tooltip-id={file.file_name.length > 30 ? "my-tooltip" : "dummy"}
                      data-tooltip-content={file.file_name}
                     >
@@ -558,12 +564,7 @@ const GetFilesHistory = ({
                       • {formatUploadedAt(file.uploaded_at)}
                     </p>
                     <p className="f-12 text-gray-500 mt-1 flex items-center space-x-1">
-                      <CircleHelp
-                        size={14}
-                        className="cursor-pointer"
-                        data-tooltip-id="my-tooltip"
-                        data-tooltip-content="Files will expire after a certain period."
-                      />
+                      
                       <span
                         data-tooltip-id="my-tooltip"
                         data-tooltip-content={`Expires on: ${formatDate(
@@ -572,6 +573,12 @@ const GetFilesHistory = ({
                       >
                         {getDaysLeft(file.date)}
                       </span>
+                      <CircleHelp
+                        size={14}
+                        className="cursor-pointer"
+                        data-tooltip-id="my-tooltip"
+                        data-tooltip-content="Files will expire after a certain period."
+                      />
                     </p>
                   </div>
                 </div>
@@ -580,9 +587,9 @@ const GetFilesHistory = ({
 
                     <button
                       onClick={() => handledeleteclick(file.id)} // Replace with actual trash logic
-                      className="f-12 text-red-500 hover:text-red-700 transition-colors  bg-red-100 rounded-full p-1 "
+                      className="f-12 btn btn-outline-danger btn-sm px-1 py-1"
                     >
-                      <Trash2 size={18} />
+                      <Trash2 size={13} />
                     </button>
 
                     <a
@@ -594,29 +601,29 @@ const GetFilesHistory = ({
                           ? file.file_url
                           : undefined
                       }
-                      className="flex items-center font-semibold justify-end text-sm text-white bg-[#D7763D] px-1 py-0.5 f-12 rounded hover:bg-[#bb4c0b] transition-colors mt-1"
+                      className="flex items-center font-semibold justify-end text-sm btn btn-outline-success btn-sm f-11 mt-2 py-0 px-1"
                     >
                       {/* <ArrowDownToLine size={15} className="mr-2" /> */}
-                      <Download size={15} className="" />
+                      <Download size={12} className="me-1" />
                        {file.access_type === "download" ? "Download" : "View"}
                     </a>
                     {isPast(file.date) && !activeManageAccess && (
                       <button
                         onClick={() => handleManageAccess(file.id)}
                         // underline
-                        className="f-10 ms-2 justify-center w-full flex  text-black-500 hover:text-black-700 transition-colors mt-2  rounded-md px-1 py-1 border hover:border-[#D7763D]"
+                        className="btn btn-outline-dark btn-sm f-11 ms-1 justify-center flex mt-2  px-1 py-1"
                       >
                         Manage Access
-                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right-icon lucide-move-right ms-2"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
+                        <MoveRightIcon size={13} className="ms-1 mt-0.5" />
                       </button>
                     )}
                   </div>
                   {activeManageAccess === file.id && (
-                    <div className="mt-3 flex items-center gap-3">
+                    <div className="mt-2 flex items-center gap-2 ">
                       <select
                         value={selectedDuration}
                         onChange={(e) => setSelectedDuration(e.target.value)}
-                        className="border border-gray-300 rounded-md px-3 py-1 text-sm "
+                        className="form-select form-select-sm f-11"
                       >
                         <option value="">Select duration</option>
                         {durations.map((d) => (
@@ -628,15 +635,15 @@ const GetFilesHistory = ({
 
                       <button
                         onClick={() => handleConfirmAccess(file.id)}
-                        className="bg-green-500 hover:bg-green-600 text-white p-1 rounded-full"
+                        className="btn btn-success btn-sm py-1 px-1"
                       >
-                        <Check size={18} />
+                        <Check size={13} />
                       </button>
                       <button
                         onClick={handleCancelAccess}
-                        className="bg-red-500 hover:bg-red-600 text-white p-1 rounded-full"
+                        className="btn btn-outline-danger btn-sm py-1 px-1"
                       >
-                        <X size={18} />
+                        <X size={13} />
                       </button>
                     </div>
                   )}

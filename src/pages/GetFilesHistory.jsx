@@ -331,7 +331,7 @@ const GetFilesHistory = ({
   return (
     <div className="bg-white p-3 rounded shadow-sm">
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white rounded shadow-lg w-96 p-3 relative">
             
             <div className="flex justify-between mb-3 items-end">
@@ -377,7 +377,7 @@ const GetFilesHistory = ({
         </div>
       )}
       {editModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white rounded-2xl shadow-lg w-96 p-6 relative">
             <button
               onClick={() => setEditModalOpen(false)}

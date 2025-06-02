@@ -67,3 +67,8 @@ div::selection {
 .share-body-sec{
   background-color: #f8f9fa;
 }
+
+
+.line-break{
+  line-break: anywhere;
+}

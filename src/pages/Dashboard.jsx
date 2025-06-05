@@ -176,29 +176,33 @@ const Dashboard = () => {
           {files.map((item, index) => (
             <motion.div
               key={index}
-              className="bg-white shadow-sm rounded-xl py-2 px-3 border border-gray-200 relative mt-3"
+              className="bg-white shadow-sm rounded py-2 px-2 border border-gray-200 relative mt-3"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
               {/* X Button to remove file */}
-              <button
-                onClick={() => removeFile(index)}
-                disabled={isUploading}
-                className="absolute top-2 right-2 bg-red-100 p-1 rounded-full text-red-500 hover:text-red-700"
-              >
-                <X className="h-4 w-4" />
-              </button>
+              
 
-              <div className="flex items-center gap-1 mb-2">
-                <FileText className="text-blue-500" size={20} />
-                <div className="text-sm text-gray-600">{item.file.name}</div>
+              <div className="flex justify-between items-start gap-2">
+                <div className="flex items-start gap-2 mb-2">
+                  <FileText className="text-blue-500" size={20} />
+                  <div className="text-sm text-gray-600 f-13 line-break">{item.file.name}</div>
+                </div>
+
+                <button
+                  onClick={() => removeFile(index)}
+                  disabled={isUploading}
+                  className="btn btn-outline-danger btn-sm px-1"
+                >
+                  <X size={11} />
+                </button>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    Filename
+              <div className="grid md:grid-cols-1 gap-4 mt-1 ms-4">
+                <div className="bg-light p-2 ">
+                  <label className="block f-13 font-medium mb-1">
+                    Edit Filename :
                   </label>
                   <input
                     type="text"

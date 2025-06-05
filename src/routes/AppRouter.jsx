@@ -61,6 +61,7 @@ export default function AppRouter() {
             <Route path="/" element={<Dashboard />} />
           </Route>
         </Route>
+        
       </Routes>
       </AutoLoginWrapper>
     </Router>

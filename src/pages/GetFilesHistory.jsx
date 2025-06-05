@@ -13,13 +13,15 @@ import {
   ArrowDownToLine,
   Download,
   MoveRightIcon,
+  Move,
 } from "lucide-react";
 import toast from "react-hot-toast";
 import { ScaleLoader } from "react-spinners";
 import dayjs from "dayjs";
-import upleft from '../assets/upleft.svg';
+import upleft from "../assets/upleft.svg";
 
 import ConfirmationModal from "../components/ConfirmationModal";
+import MoveModal from "../components/MoveModal";
 const GetFilesHistory = ({
   userId,
   fetchFiles,
@@ -72,7 +74,7 @@ const GetFilesHistory = ({
       const data = await response.json();
       if (data.status) {
         toast.success(data.message || "File Access Updated");
-        fetchFiles(selectedFolderId)
+        fetchFiles(selectedFolderId);
       } else {
         toast.error(data.message || "Error while updating access");
       }
@@ -218,6 +220,13 @@ const GetFilesHistory = ({
     }
   };
 
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [moveFileOpen, setMoveFileOpen] = useState(false);
+  const handleMoveclick = (file) => {
+    setSelectedFile(file);
+    setMoveFileOpen(true);
+  };
+
   const [isOptionsVisible, setIsOptionsVisible] = useState(false);
   const [selectedFolder, setSelectedFolder] = useState(null);
   const [selectedFolderNameRef, setSelectedFolderNameRef] = useState(null);
@@ -333,7 +342,6 @@ const GetFilesHistory = ({
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white rounded shadow-lg w-96 p-3 relative">
-            
             <div className="flex justify-between mb-3 items-end">
               <h2 className="f-16 font-bold text-gray-800">
                 Create New Folder
@@ -432,7 +440,9 @@ const GetFilesHistory = ({
             </button>
           ) : (
             <button
-              onClick={() => { handleFolderClick(null, 0) }}
+              onClick={() => {
+                handleFolderClick(null, 0);
+              }}
               className="flex items-center f-11 btn btn-outline-dark btn-sm "
             >
               <img src={upleft} className="w-3 h-3 mr-1 rotate-90" />
@@ -476,55 +486,55 @@ const GetFilesHistory = ({
       {loading
         ? renderSkeleton()
         : folders.length > 0 &&
-        !selectedFolderName && (
-          <>
-            <div className="grid grid-cols-1 my-1 space-y-2">
-              {folders.map((folder) => (
-                <div
-                  key={folder.id}
-                  onDoubleClick={() =>
-                    handleFolderClick(folder.name, folder.id)
-                  }
-                  className="relative cursor-pointer flex items-center justify-start bg-gray-50 border border-gray-200 rounded-xl p-2 px-2 hover:shadow-sm transition"
-                >
-                  <div className="text-[#092e46]  rounded-full flex items-center justify-center">
-                    <FolderClosed size={20} className="fill-orange-200" />
-                  </div>
-                  <h3 className="font-semibold text-gray-800 ml-2 select-none f-14">
-                    {folder.name}
-                  </h3>
-                  <button
-                    onClick={() => handleOptionClick(folder.id, folder.name)}
-                    className="text-gray-600 hover:text-gray-900 ml-auto border px-1 py-0.5 bg-gray-50 rounded-md hover:bg-white"
+          !selectedFolderName && (
+            <>
+              <div className="grid grid-cols-1 my-1 space-y-2">
+                {folders.map((folder) => (
+                  <div
+                    key={folder.id}
+                    onDoubleClick={() =>
+                      handleFolderClick(folder.name, folder.id)
+                    }
+                    className="relative cursor-pointer flex items-center justify-start bg-gray-50 border border-gray-200 rounded-xl p-2 px-2 hover:shadow-sm transition"
                   >
-                    <EllipsisIcon size={20} />
-                  </button>
-
-                  {/* Floating options */}
-                  {isOptionsVisible && selectedFolder === folder.id && (
-                    <div
-                      ref={optionsRef}
-                      className="absolute right-4 top-14 w-36 bg-white border rounded-md shadow-lg z-10 p-2"
-                    >
-                      <button
-                        onClick={handleRenameFolder}
-                        className="block w-full text-left text-sm p-2 hover:bg-gray-100"
-                      >
-                        Rename Folder
-                      </button>
-                      <button
-                        onClick={handleDeleteFolder}
-                        className="block w-full text-left text-sm text-red-500 p-2 hover:bg-gray-100"
-                      >
-                        Delete Folder
-                      </button>
+                    <div className="text-[#092e46]  rounded-full flex items-center justify-center">
+                      <FolderClosed size={20} className="fill-orange-200" />
                     </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </>
-        )}
+                    <h3 className="font-semibold text-gray-800 ml-2 select-none f-14">
+                      {folder.name}
+                    </h3>
+                    <button
+                      onClick={() => handleOptionClick(folder.id, folder.name)}
+                      className="text-gray-600 hover:text-gray-900 ml-auto border px-1 py-0.5 bg-gray-50 rounded-md hover:bg-white"
+                    >
+                      <EllipsisIcon size={20} />
+                    </button>
+
+                    {/* Floating options */}
+                    {isOptionsVisible && selectedFolder === folder.id && (
+                      <div
+                        ref={optionsRef}
+                        className="absolute right-4 top-14 w-36 bg-white border rounded-md shadow-lg z-10 p-2"
+                      >
+                        <button
+                          onClick={handleRenameFolder}
+                          className="block w-full text-left text-sm p-2 hover:bg-gray-100"
+                        >
+                          Rename Folder
+                        </button>
+                        <button
+                          onClick={handleDeleteFolder}
+                          className="block w-full text-left text-sm text-red-500 p-2 hover:bg-gray-100"
+                        >
+                          Delete Folder
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
 
       {loading ? (
         renderSkeleton()
@@ -541,30 +551,36 @@ const GetFilesHistory = ({
                 className="select-none flex items-start justify-between bg-white border border-gray-200 rounded-xl px-2 py-2 f-12 hover:shadow-lg transition-all ease-in-out duration-300 relative me-2"
               >
                 <div className="flex items-start">
-                  <FileText className="text-blue-500 me-1" size={20}  />
+                  <FileText className="text-blue-500 me-1" size={20} />
                   <div>
-                    <p className="f-13 font-semibold text-gray-800 mt-0.5"
-                     data-tooltip-id={file.file_name.length > 30 ? "my-tooltip" : "dummy"}
-                     data-tooltip-content={file.file_name}
+                    <p
+                      className="f-13 font-semibold text-gray-800 mt-0.5"
+                      data-tooltip-id={
+                        file.file_name.length > 30 ? "my-tooltip" : "dummy"
+                      }
+                      data-tooltip-content={file.file_name}
                     >
                       {file.file_name.length <= 30
                         ? file.file_name
-                        : `${file.file_name.slice(0, 12)}...${file.file_name.slice(-15)}`}
+                        : `${file.file_name.slice(
+                            0,
+                            12
+                          )}...${file.file_name.slice(-15)}`}
                     </p>
 
                     <p className="f-12 text-gray-500 capitalize my-2">
                       <span
-                        className={`${file.access_type === "download"
+                        className={`${
+                          file.access_type === "download"
                             ? "text-green-500"
                             : "text-black bg-gray-100 border py-0.5 px-2 rounded-full"
-                          }`}
+                        }`}
                       >
                         {file.access_type}
                       </span>{" "}
                       • {formatUploadedAt(file.uploaded_at)}
                     </p>
                     <p className="f-12 text-gray-500 mt-1 flex items-center space-x-1">
-                      
                       <span
                         data-tooltip-id="my-tooltip"
                         data-tooltip-content={`Expires on: ${formatDate(
@@ -584,13 +600,26 @@ const GetFilesHistory = ({
                 </div>
                 <div className="flex flex-col">
                   <div className="flex flex-col justify-end items-end space-x-3">
+                    <div className="flex items-center space-x-1">
+                      <button
+                        data-tooltip-id="my-tooltip"
+                        data-tooltip-content="Move"
+                        onClick={() => handleMoveclick(file)} // Replace with actual trash logic
+                        className="f-12 btn btn-outline-primary btn-sm px-1 py-1"
+                      >
+                        <Move size={13} />
+                      </button>
 
-                    <button
-                      onClick={() => handledeleteclick(file.id)} // Replace with actual trash logic
-                      className="f-12 btn btn-outline-danger btn-sm px-1 py-1"
-                    >
-                      <Trash2 size={13} />
-                    </button>
+                      <button
+                        data-tooltip-id="my-tooltip"
+                        data-tooltip-content="Delete"
+                        onClick={() => handledeleteclick(file.id)} // Replace with actual trash logic
+                        className="f-12 btn btn-outline-danger btn-sm px-1 py-1"
+                      >
+                        <Trash2 size={13} />
+                      </button>
+
+                    </div>
 
                     <a
                       href={file.file_url}
@@ -605,7 +634,7 @@ const GetFilesHistory = ({
                     >
                       {/* <ArrowDownToLine size={15} className="mr-2" /> */}
                       <Download size={12} className="me-1" />
-                       {file.access_type === "download" ? "Download" : "View"}
+                      {file.access_type === "download" ? "Download" : "View"}
                     </a>
                     {isPast(file.date) && !activeManageAccess && (
                       <button
@@ -669,6 +698,14 @@ const GetFilesHistory = ({
           message="All the files will be permanently deleted inside this folder"
           onYes={deleteFolder}
           onClose={() => setDeleteConfirmationOpen(false)}
+        />
+      )}
+      {moveFileOpen && (
+        <MoveModal
+        file={selectedFile}
+        folders={folders}
+        onClose={()=>{setMoveFileOpen(false)}}
+        after={fetchFiles}
         />
       )}
     </div>

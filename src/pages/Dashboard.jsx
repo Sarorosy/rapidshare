@@ -28,6 +28,7 @@ const Dashboard = () => {
       file,
       filename: file.name,
       accessType: "download",
+      duration: 7,
     }));
     setFiles((prev) => [...prev, ...filesWithMeta]);
   };
@@ -42,6 +43,12 @@ const Dashboard = () => {
     setFiles(files.filter((_, i) => i !== index));
     toast.success("File removed");
   };
+  const durations = [
+    { label: "7 days", value: 7 },
+    { label: "15 days", value: 15 },
+    { label: "30 days", value: 30 },
+    { label: "60 days", value: 60 },
+  ];
 
   const [isUploading, setIsUploading] = useState(false);
 
@@ -55,6 +62,7 @@ const Dashboard = () => {
       formData.append("files[]", item.file);
       formData.append(`filenames[${index}]`, item.filename);
       formData.append(`accessTypes[${index}]`, item.accessType);
+      formData.append(`accessDuration[${index}]`, item.duration);
     });
     formData.append("user_id", user?.id); // Assuming API expects user_id
     formData.append("folder_id", selectedFolderId ?? 0); // Assuming API expects folder_id
@@ -140,115 +148,138 @@ const Dashboard = () => {
           selectedFolderId={selectedFolderId}
         />
       </div>
-      
+
       <div className="col-md-5">
-      <div className="bg-white rounded shadow-sm sticky top-0  p-3">
-        <h1 className="select-none f-16 font-semibold mb-3 flex items-center">
-          Upload Files{" "}
-          
-        </h1>
-        {selectedFolderName && (
-            <p className="text-gray-600 my-3 f-11">Your files will be uploaded in the folder <span className="font-bold">{selectedFolderName}</span></p>
+        <div className="bg-white rounded shadow-sm sticky top-0  p-3">
+          <h1 className="select-none f-16 font-semibold mb-3 flex items-center">
+            Upload Files{" "}
+          </h1>
+          {selectedFolderName && (
+            <p className="text-gray-600 my-3 f-11">
+              Your files will be uploaded in the folder{" "}
+              <span className="font-bold">{selectedFolderName}</span>
+            </p>
           )}
 
-        {/* Drag & Drop Zone */}
-        <div
-          onDrop={handleDrop}
-          onDragOver={(e) => e.preventDefault()}
-          className="border-4 border-dashed border-gray-300 rounded-2xl p-4 text-center cursor-pointer hover:bg-gray-50 transition"
-          onClick={() => document.getElementById("fileInput").click()}
-        >
-          <UploadCloud className="mx-auto text-[#092e46] mb-2" size={30} />
-          <p className="text-gray-600 select-none">
-            Drag & drop files here or click to choose
-          </p>
-          <input
-            id="fileInput"
-            type="file"
-            multiple
-            onChange={handleFileSelect}
-            className="hidden"
-          />
-        </div>
-
-        {/* File List */}
-        <div className={`space-y-6 overflow-y-auto max-h-[400px] ${(files && files.length > 0) ? " py-2 px-1" : ""}`}>
-          {files.map((item, index) => (
-            <motion.div
-              key={index}
-              className="bg-white shadow-sm rounded py-2 px-2 border border-gray-200 relative mt-3"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-            >
-              {/* X Button to remove file */}
-              
-
-              <div className="flex justify-between items-start gap-2">
-                <div className="flex items-start gap-2 mb-2">
-                  <FileText className="text-blue-500" size={20} />
-                  <div className="text-sm text-gray-600 f-13 line-break">{item.file.name}</div>
-                </div>
-
-                <button
-                  onClick={() => removeFile(index)}
-                  disabled={isUploading}
-                  className="btn btn-outline-danger btn-sm px-1"
-                >
-                  <X size={11} />
-                </button>
-              </div>
-
-              <div className="grid md:grid-cols-1 gap-4 mt-1 ms-4">
-                <div className="bg-light p-2 ">
-                  <label className="block f-13 font-medium mb-1">
-                    Edit Filename :
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full border rounded px-2 py-1 f-13 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    value={item.filename}
-                    maxLength={40}
-                    onChange={(e) =>
-                      updateFile(index, "filename", e.target.value)
-                    }
-                  />
-                </div>
-
-                
-              </div>
-            </motion.div>
-          ))}
-        </div>
-        {files.length > 0 && (
-          <div className="mt-2 text-right flex justify-end">
-            <button
-              onClick={uploadAllFiles}
-              disabled={isUploading}
-              className={`relative  flex items-center justify-center gap-2 px-2 py-1 f-13 rounded text-white font-semibold transition-all duration-300 ${
-                isUploading
-                  ? "bg-[#72afa3] opacity-70 cursor-not-allowed"
-                  : "btn btn-success btn-sm active:scale-95"
-              }`}
-            >
-              {isUploading ? (
-                <>
-                  Uploading...
-                  <ScaleLoader
-                    color="#ffffff"
-                    height={10}
-                    width={3}
-                    radius={2}
-                    margin={2}
-                  />
-                </>
-              ) : (
-                "Upload All"
-              )}
-            </button>
+          {/* Drag & Drop Zone */}
+          <div
+            onDrop={handleDrop}
+            onDragOver={(e) => e.preventDefault()}
+            className="border-4 border-dashed border-gray-300 rounded-2xl p-4 text-center cursor-pointer hover:bg-gray-50 transition"
+            onClick={() => document.getElementById("fileInput").click()}
+          >
+            <UploadCloud className="mx-auto text-[#092e46] mb-2" size={30} />
+            <p className="text-gray-600 select-none">
+              Drag & drop files here or click to choose
+            </p>
+            <input
+              id="fileInput"
+              type="file"
+              multiple
+              onChange={handleFileSelect}
+              className="hidden"
+            />
           </div>
-        )}
-      </div>
+
+          {/* File List */}
+          <div
+            className={`space-y-6 overflow-y-auto max-h-[400px] ${
+              files && files.length > 0 ? " py-2 px-1" : ""
+            }`}
+          >
+            {files.map((item, index) => (
+              <motion.div
+                key={index}
+                className="bg-white shadow-sm rounded py-2 px-2 border border-gray-200 relative mt-3"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                {/* X Button to remove file */}
+
+                <div className="flex justify-between items-start gap-2">
+                  <div className="flex items-start gap-2 mb-2">
+                    <FileText className="text-blue-500" size={20} />
+                    <div className="text-sm text-gray-600 f-13 line-break">
+                      {item.file.name}
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => removeFile(index)}
+                    disabled={isUploading}
+                    className="btn btn-outline-danger btn-sm px-1"
+                  >
+                    <X size={11} />
+                  </button>
+                </div>
+
+                <div className="grid md:grid-cols-1 gap-4 mt-1 ms-4">
+                  <div className="bg-light p-2 ">
+                    <label className="block f-13 font-medium mb-1">
+                      Edit Filename :
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full border rounded px-2 py-1 f-13 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      value={item.filename}
+                      maxLength={40}
+                      onChange={(e) =>
+                        updateFile(index, "filename", e.target.value)
+                      }
+                    />
+                  </div>
+                  <div className="bg-light p-2">
+                    <label className="block f-13 font-medium mb-1">
+                      Access Duration:
+                    </label>
+                    <select
+                      value={item.duration}
+                      onChange={(e) =>
+                        updateFile(index, "duration", parseInt(e.target.value))
+                      }
+                      className="form-select form-select-sm f-13"
+                    >
+                      {durations.map((d) => (
+                        <option key={d.value} value={d.value}>
+                          {d.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          {files.length > 0 && (
+            <div className="mt-2 text-right flex justify-end">
+              <button
+                onClick={uploadAllFiles}
+                disabled={isUploading}
+                className={`relative  flex items-center justify-center gap-2 px-2 py-1 f-13 rounded text-white font-semibold transition-all duration-300 ${
+                  isUploading
+                    ? "bg-[#72afa3] opacity-70 cursor-not-allowed"
+                    : "btn btn-success btn-sm active:scale-95"
+                }`}
+              >
+                {isUploading ? (
+                  <>
+                    Uploading...
+                    <ScaleLoader
+                      color="#ffffff"
+                      height={10}
+                      width={3}
+                      radius={2}
+                      margin={2}
+                    />
+                  </>
+                ) : (
+                  "Upload All"
+                )}
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

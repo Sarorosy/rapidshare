@@ -199,8 +199,8 @@ const Dashboard = () => {
 
                 <div className="flex justify-between items-start gap-2">
                   <div className="flex items-start gap-2 mb-2">
-                    <FileText className="text-blue-500" size={20} />
-                    <div className="text-sm text-gray-600 f-13 line-break">
+                    <FileText className="text-blue-400" size={30} />
+                    <div className="f-14 font-semibold text-gray-800 line-break">
                       {item.file.name}
                     </div>
                   </div>
@@ -214,8 +214,8 @@ const Dashboard = () => {
                   </button>
                 </div>
 
-                <div className="grid md:grid-cols-1 gap-4 mt-1 ms-4">
-                  <div className="bg-light p-2 ">
+                <div className="flex gap-2 mt-1">
+                  <div className="bg-light p-2 w-full ">
                     <label className="block f-13 font-medium mb-1">
                       Edit Filename :
                     </label>
@@ -229,8 +229,8 @@ const Dashboard = () => {
                       }
                     />
                   </div>
-                  <div className="bg-light p-2">
-                    <label className="block f-13 font-medium mb-1">
+                  <div className="bg-light p-2 ">
+                    <label className="block f-13 font-medium mb-1 white-space-nowrap">
                       Access Duration:
                     </label>
                     <select
@@ -256,7 +256,7 @@ const Dashboard = () => {
               <button
                 onClick={uploadAllFiles}
                 disabled={isUploading}
-                className={`relative  flex items-center justify-center gap-2 px-2 py-1 f-13 rounded text-white font-semibold transition-all duration-300 ${
+                className={`relative  flex items-center justify-center gap-2 px-2 py-1 f-13 rounded text-white transition-all duration-300 ${
                   isUploading
                     ? "bg-[#72afa3] opacity-70 cursor-not-allowed"
                     : "btn btn-success btn-sm active:scale-95"

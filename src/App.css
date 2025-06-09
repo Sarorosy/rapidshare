@@ -49,6 +49,9 @@ div::selection {
 .f-13{
   font-size: 13px;
 }
+.f-14{
+  font-size: 14px;
+}
 .f-17{
   font-size: 15px;
 }
@@ -71,4 +74,23 @@ div::selection {
 
 .line-break{
   line-break: anywhere;
+}
+.white-space-nowrap {
+    white-space: nowrap;
+}
+
+
+.n-flies-list .select-none:nth-child(odd) {
+    background: #efefef ;
+}
+
+.n-folder-set .n-folder-list:nth-child(odd) {
+    background: #efefef ;
+}
+
+.n-folder-list:hover{
+  background-color: #dddddd !important;
+}
+.select-none:hover{
+  background-color: #dddddd !important;
 }

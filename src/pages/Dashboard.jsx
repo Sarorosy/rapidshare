@@ -184,7 +184,7 @@ const Dashboard = () => {
           {/* File List */}
           <div
             className={`space-y-6 overflow-y-auto max-h-[400px] ${
-              files && files.length > 0 ? " py-2 px-1" : ""
+              files && files.length > 0 ? " py-2 px-0" : ""
             }`}
           >
             {files.map((item, index) => (

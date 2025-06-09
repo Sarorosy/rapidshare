@@ -57,7 +57,7 @@ const MoveModal = ({ file, folders, onClose, after }) => {
         initial={{ scale: 0.9 }}
         animate={{ scale: 1 }}
         exit={{ scale: 0.9 }}
-        className="bg-white w-full max-w-md rounded-xl p-5 shadow-xl"
+        className="bg-white w-full max-w-md rounded-xl p-3 shadow-xl"
       >
         <h2 className="text-lg font-semibold mb-2">Move File</h2>
         <p className="select-none flex items-start justify-between bg-white border border-gray-200 rounded-xl px-2 py-2 f-12 hover:shadow-lg transition-all ease-in-out duration-300 relative me-2 mb-2">

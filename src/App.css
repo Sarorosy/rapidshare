@@ -80,8 +80,8 @@ div::selection {
 }
 
 
-.n-flies-list .select-none:nth-child(odd) {
-    background: #efefef ;
+.n-flies-list .select-none {
+    background: #f0f4f9 ;
 }
 
 .n-folder-set .n-folder-list:nth-child(odd) {

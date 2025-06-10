@@ -455,7 +455,7 @@ const GetFilesHistory = ({
           {!selectedFolderName ? (
             <button
               onClick={() => setIsModalOpen(true)}
-              className="flex items-center btn btn-success btn-sm f-11"
+              className="flex items-center btn btn-success btn-sm f-11 py-0.5"
             >
               <FolderPlus className="mr-1" size={11} />
               New Folder
@@ -465,7 +465,7 @@ const GetFilesHistory = ({
               onClick={() => {
                 handleFolderClick(null, 0);
               }}
-              className="flex items-center f-11 btn btn-outline-dark btn-sm "
+              className="flex items-center f-11 btn btn-outline-dark btn-sm  py-0.5"
             >
               <img src={upleft} className="w-3 h-3 mr-1 rotate-90" />
               Back
@@ -476,7 +476,7 @@ const GetFilesHistory = ({
             onClick={() => {
               fetchFiles(selectedFolderId);
             }}
-            className={`flex items-center btn btn-light btn-sm f-11`}
+            className={`flex items-center btn btn-light btn-sm f-11 py-0.5`}
           >
             <RefreshCcw
               size={11}
@@ -494,7 +494,7 @@ const GetFilesHistory = ({
           !selectedFolderName && (
             <>
             <div className="n-folder-set mb-3">
-              <div className="grid grid-cols-2 gap-3 ">
+              <div className="grid grid-cols-1 gap-2 ">
                 {folders.map((folder) => (
                   <div
                     key={folder.id}
@@ -504,9 +504,9 @@ const GetFilesHistory = ({
                     className="relative cursor-pointer flex items-center justify-start rounded border border-gray p-2 px-2 hover:shadow-sm hover:bg-gray-100 transition"
                   >
                     <div className="text-[#092e46]  rounded-full flex items-center justify-center">
-                      <Folder size={30} className="fill-orange-200" stroke="0" />
+                      <Folder size={20} className="fill-orange-200" stroke="0" />
                     </div>
-                    <h3 className="font-semibold text-gray-800 ml-1 f-14">
+                    <h3 className="font-semibold text-gray-800 ml-1 f-13">
                       {folder.name}
                     </h3>
                     <button
@@ -552,24 +552,24 @@ const GetFilesHistory = ({
       ) : (
         <>
           <div className=" n-flies-list">
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-3 gap-3">
             {files.map((file, idx) => (
               <div className="flex">
               <div
                 key={idx}
-                className="select-none w-100  p-3 rounded transition-all ease-in-out duration-300 relative"
+                className="select-none w-100 p-2 rounded transition-all ease-in-out duration-300 relative"
               >
-                <div className="flex items-start">
+                <div className="">
                   
                   <div>
                     <p
-                      className="f-14 font-semibold text-gray-800 flex items-start"
+                      className="f-12 font-semibold text-gray-800 flex items-start justify-between flex-row-reverse"
                       data-tooltip-id={
                         file.file_name.length > 30 ? "my-tooltip" : "dummy"
                       }
                       data-tooltip-content={file.file_name}
                     >
-                      <FileText className="text-blue-400 me-1" size={20} /> {file.file_name.length <= 30
+                      <FileText className="text-blue-400" size={20} /> {file.file_name.length <= 30
                         ? file.file_name
                         : `${file.file_name.slice(
                             0,
@@ -578,7 +578,7 @@ const GetFilesHistory = ({
                     </p>
 
                     <div className="flex justify-start flex-col mt-1 gap-1">
-                      <p className="f-12 text-gray-500 capitalize">
+                      <p className="f-10 text-gray-500 capitalize">
                         <span
                           className={`${
                             file.access_type === "download"
@@ -591,75 +591,41 @@ const GetFilesHistory = ({
                         </span>{" "}
                         • {formatUploadedAt(file.uploaded_at)}
                       </p>
-                      <p className="f-12 text-gray-500 flex items-center space-x-1">
-                        <span
-                          data-tooltip-id="my-tooltip"
-                          data-tooltip-content={`Expires on: ${formatDate(
-                            file.date
-                          )}`}
-                        >
-                          {getDaysLeft(file.date)}
-                        </span>
-                        <CircleHelp
-                          size={14}
-                          className="cursor-pointer"
-                          data-tooltip-id="my-tooltip"
-                          data-tooltip-content="Files will expire after a certain period."
-                        />
-                      </p>
+                      
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-col mt-2">
-                  <div className="flex flex-col justify-end items-end space-x-3">
-                    <div className="flex items-center space-x-1">
-
-                      {activeManageAccess === file.id && (
-                        <div className="flex items-center gap-2 ">
-                          <select
-                            value={selectedDuration}
-                            onChange={(e) => setSelectedDuration(e.target.value)}
-                            className="form-select form-select-sm f-11"
+                <div className="mt-2">
+                  <div className="">
+                    <div className="flex items-center space-x-1 justify-between">
+                      <div>
+                        
+                        <p className="f-10 text-gray-500 flex items-center space-x-1">
+                          <span
+                            data-tooltip-id="my-tooltip"
+                            data-tooltip-content={`Expires on: ${formatDate(
+                              file.date
+                            )}`}
                           >
-                            <option value="">Select duration</option>
-                            {durations.map((d) => (
-                              <option key={d.value} value={d.value}>
-                                {d.label}
-                              </option>
-                            ))}
-                          </select>
-
-                          <button
-                            onClick={() => handleConfirmAccess(file.id)}
-                            className="btn btn-success btn-sm py-1 px-1"
-                          >
-                            <Check size={12} />
-                          </button>
-                          <button
-                            onClick={handleCancelAccess}
-                            className="btn btn-outline-danger btn-sm py-1 px-1"
-                          >
-                            <X size={12} />
-                          </button>
-                        </div>
-                      )}
-                      {isPast(file.date) && !activeManageAccess && (
-                        <button
-                          onClick={() => handleManageAccess(file.id)}
-                          // underline
-                          className="btn btn-outline-dark btn-sm f-11 justify-center flex  px-1 py-0.5"
-                        >
-                          Manage Access
-                          <MoveRightIcon size={13} className="ms-1 mt-0.5" />
-                        </button>
-                      )}
+                            {getDaysLeft(file.date)}
+                          </span>
+                          <CircleHelp
+                            size={14}
+                            className="cursor-pointer"
+                            data-tooltip-id="my-tooltip"
+                            data-tooltip-content="Files will expire after a certain period."
+                          />
+                        </p>
+                      </div>
+                      <div className="flex gap-1">
+                      
                       <button
                         data-tooltip-id="my-tooltip"
                         data-tooltip-content="Move"
                         onClick={() => handleMoveclick(file)} // Replace with actual trash logic
-                        className="f-12 btn btn-outline-primary btn-sm px-1 py-1"
+                        className="btn btn-outline-primary btn-sm  border-0 px-1"
                       >
-                        <Move size={13} />
+                        <Move size={11} />
                       </button>
 
                       
@@ -675,10 +641,10 @@ const GetFilesHistory = ({
                             ? file.file_url
                             : undefined
                         }
-                        className="f-12  px-1 py-1 btn btn-outline-success btn-sm"
+                        className="btn btn-outline-success btn-sm border-0 px-1"
                       >
                         {/* <ArrowDownToLine size={15} className="mr-2" /> */}
-                        <Download size={12} className="" />
+                        <Download size={11} className="" />
                         {/* {file.access_type === "download" ? "Download" : "View"} */}
                       </a>
 
@@ -686,16 +652,53 @@ const GetFilesHistory = ({
                         data-tooltip-id="my-tooltip"
                         data-tooltip-content="Delete"
                         onClick={() => handledeleteclick(file.id)} // Replace with actual trash logic
-                        className="f-12 btn btn-outline-danger btn-sm px-1 py-1"
+                        className="btn btn-outline-danger btn-sm border-0 px-1"
                       >
-                        <Trash2 size={13} />
+                        <Trash2 size={11} />
                       </button>
-
-                      
-                      
-
+                      </div>
                     </div>
-
+                    <div>
+                      {activeManageAccess === file.id && (
+                          <div className="flex items-center gap-1 bg-white p-1 rounded mt-2">
+                            <select
+                              value={selectedDuration}
+                              onChange={(e) => setSelectedDuration(e.target.value)}
+                              className="form-select form-select-sm f-10"
+                            >
+                              <option value="">Select duration</option>
+                              {durations.map((d) => (
+                                <option key={d.value} value={d.value}>
+                                  {d.label}
+                                </option>
+                              ))}
+                            </select>
+                              <button
+                              onClick={handleCancelAccess}
+                              className="btn btn-outline-danger btn-sm py-1 px-1 border-0"
+                            >
+                              <X size={11} />
+                            </button>
+                            <button
+                              onClick={() => handleConfirmAccess(file.id)}
+                              className="btn btn-outline-success btn-sm py-1 px-1 border-0"
+                            >
+                              <Check size={11} />
+                            </button>
+                            
+                          </div>
+                        )}
+                        {isPast(file.date) && !activeManageAccess && (
+                          <button
+                            onClick={() => handleManageAccess(file.id)}
+                            // underline
+                            className="btn btn-outline-secondary btn-sm f-11 justify-center flex  px-1 py-0.5 mt-2 w-full"
+                          >
+                            Manage Access
+                            <MoveRightIcon size={13} className="ms-1 mt-0.5" />
+                          </button>
+                        )}
+                    </div>
                     
                     
                   </div>

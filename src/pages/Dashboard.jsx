@@ -165,11 +165,11 @@ const Dashboard = () => {
           <div
             onDrop={handleDrop}
             onDragOver={(e) => e.preventDefault()}
-            className="border-4 border-dashed border-gray-300 rounded-2xl p-4 text-center cursor-pointer hover:bg-gray-50 transition"
+            className="border-4 border-dashed border-gray-300 rounded-xl p-4 text-center cursor-pointer hover:bg-gray-50 transition"
             onClick={() => document.getElementById("fileInput").click()}
           >
-            <UploadCloud className="mx-auto text-[#092e46] mb-2" size={30} />
-            <p className="text-gray-600 select-none">
+            <UploadCloud className="mx-auto text-[#092e46] mb-2" size={25} />
+            <p className="text-gray-600 select-none f-14">
               Drag & drop files here or click to choose
             </p>
             <input
@@ -184,7 +184,7 @@ const Dashboard = () => {
           {/* File List */}
           <div
             className={`space-y-6 overflow-y-auto max-h-[400px] ${
-              files && files.length > 0 ? " py-2 px-0" : ""
+              files && files.length > 0 ? " pb-2 px-0" : ""
             }`}
           >
             {files.map((item, index) => (
@@ -199,8 +199,8 @@ const Dashboard = () => {
 
                 <div className="flex justify-between items-start gap-2">
                   <div className="flex items-start gap-2 mb-2">
-                    <FileText className="text-blue-400" size={30} />
-                    <div className="f-14 font-semibold text-gray-800 line-break">
+                    <FileText className="text-blue-400" size={20} />
+                    <div className="f-13 font-semibold text-gray-800 line-break">
                       {item.file.name}
                     </div>
                   </div>
@@ -208,20 +208,20 @@ const Dashboard = () => {
                   <button
                     onClick={() => removeFile(index)}
                     disabled={isUploading}
-                    className="btn btn-outline-danger btn-sm px-1"
+                    className="btn btn-outline-danger btn-sm px-1 border-0"
                   >
-                    <X size={11} />
+                    <X size={15} />
                   </button>
                 </div>
 
                 <div className="flex gap-2 mt-1">
                   <div className="bg-light p-2 w-full ">
-                    <label className="block f-13 font-medium mb-1">
+                    <label className="block f-12 font-medium mb-1">
                       Edit Filename :
                     </label>
                     <input
                       type="text"
-                      className="w-full border rounded px-2 py-1 f-13 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      className="w-full border rounded px-2 py-1 f-12 focus:outline-none focus:ring-2 focus:ring-blue-400"
                       value={item.filename}
                       maxLength={40}
                       onChange={(e) =>
@@ -230,7 +230,7 @@ const Dashboard = () => {
                     />
                   </div>
                   <div className="bg-light p-2 ">
-                    <label className="block f-13 font-medium mb-1 white-space-nowrap">
+                    <label className="block f-12 font-medium mb-1 white-space-nowrap">
                       Access Duration:
                     </label>
                     <select
@@ -238,7 +238,7 @@ const Dashboard = () => {
                       onChange={(e) =>
                         updateFile(index, "duration", parseInt(e.target.value))
                       }
-                      className="form-select form-select-sm f-13"
+                      className="form-select form-select-sm f-12"
                     >
                       {durations.map((d) => (
                         <option key={d.value} value={d.value}>
@@ -256,7 +256,7 @@ const Dashboard = () => {
               <button
                 onClick={uploadAllFiles}
                 disabled={isUploading}
-                className={`relative  flex items-center justify-center gap-2 px-2 py-1 f-13 rounded text-white transition-all duration-300 ${
+                className={`relative  flex items-center justify-center gap-2 px-2  f-12 py-0.5 rounded text-white transition-all duration-300 ${
                   isUploading
                     ? "bg-[#72afa3] opacity-70 cursor-not-allowed"
                     : "btn btn-success btn-sm active:scale-95"

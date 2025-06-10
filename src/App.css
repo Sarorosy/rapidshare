@@ -40,6 +40,9 @@ div::selection {
   background-color: #092e46;
 }
 
+.f-10{
+  font-size: 10px;
+}
 .f-11{
   font-size: 11px;
 }

@@ -506,8 +506,8 @@ const GetFilesHistory = ({
                     <div className="text-[#092e46]  rounded-full flex items-center justify-center">
                       <Folder size={20} className="fill-orange-200" stroke="0" />
                     </div>
-                    <h3 className="font-semibold text-gray-800 ml-1 f-13">
-                      {folder.name}
+                    <h3 className="font-semibold text-gray-800 ml-1 f-13 flex items-center">
+                      {folder.name} <span className="border-1 border-gray-400 rounded-full  h-4 w-4 flex items-center justify-center ml-3 f-11">{folder.file_count ?? 0}</span>
                     </h3>
                     <button
                       onClick={() => handleOptionClick(folder.id, folder.name)}
@@ -589,7 +589,7 @@ const GetFilesHistory = ({
                           {/* {file.access_type} */}
                           Uploaded
                         </span>{" "}
-                        • {formatUploadedAt(file.uploaded_at)}
+                        {/* • {formatUploadedAt(file.uploaded_at)} */}
                       </p>
                       
                     </div>

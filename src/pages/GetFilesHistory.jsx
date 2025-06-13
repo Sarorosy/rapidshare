@@ -557,7 +557,7 @@ const GetFilesHistory = ({
               <div className="flex">
               <div
                 key={idx}
-                className="select-none w-100 p-2 rounded transition-all ease-in-out duration-300 relative"
+                className="select-none select-nones w-100 p-2 rounded transition-all ease-in-out duration-300 relative"
               >
                 <div className="">
                   

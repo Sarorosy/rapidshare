@@ -9,7 +9,7 @@ import dayjs from "dayjs";
 const FileSideBar = ({ onClose, fileId, userId, selectionNotification, deleteNotification }) => {
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
-
+ 
   const fetchFile = async () => {
     try {
       setLoading(true);

@@ -6,11 +6,14 @@ import { useAuth } from "../utils/idb";
 import GetFilesHistory from "./GetFilesHistory";
 import { FadeLoader, ScaleLoader } from "react-spinners";
 import TrashedFiles from "./TrashedFiles";
+import FileUploadInfo from "../components/FileUploadInfo";
 
 const Dashboard = () => {
   const [files, setFiles] = useState([]);
   const [folders, setFolders] = useState([]);
   const { user } = useAuth();
+
+  const [readInfo, setReadInfo]= useState(false);
 
   const handleDrop = (e) => {
     e.preventDefault();
@@ -133,6 +136,10 @@ const Dashboard = () => {
       setLoading(false);
     }
   };
+
+  if(!readInfo){
+    return <FileUploadInfo setReadInfo={setReadInfo} />
+  }
 
   return (
     <div className="row min-h-full">

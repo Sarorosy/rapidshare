@@ -200,7 +200,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
     </>,
   ],
   footer:
-    "Your work is precious, and so is your trust. Upload your files confidently and let us help you achieve academic excellence.",
+    <div className="text-[15px]">Your work is precious, and so is your trust. Upload your files confidently and let us help you achieve academic excellence.</div>
 }
 ,
   ];

@@ -229,7 +229,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
         <h1 className="text-[20px] font-bold">
           Welcome to the <span  style={{ color: primaryColor }}>File Upload Portal</span>
         </h1>
-        <p className="text-gray-600">
+        <p className="text-gray-600 text-[15px]">
           We understand that your thesis and research files are valuable and
           confidential. Our platform is designed to make your experience secure,
           simple, and trustworthy. Here's everything you need to know before

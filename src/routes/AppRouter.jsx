@@ -46,9 +46,11 @@ function AutoLoginWrapper({ children }) {
   return children;
 }
 
+//basename="/rapidshare"
+
 export default function AppRouter() {
   return (
-    <Router > //basename="/rapidshare"
+    <Router > 
       <ScrollToTop />
       <AutoLoginWrapper>
       <Routes>

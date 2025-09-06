@@ -84,7 +84,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
         
         {/* Why We Need Your Files Section */}
         <section className="mb-16">
-          <div className="bg-white rounded-2xl shadow-lg p-8">
+          <div className="bg-white rounded-2xl  p-8">
             <div className="text-center mb-8">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
                 <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -129,7 +129,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
 
         {/* How to Use Section */}
         <section className="mb-16">
-          <div className="bg-white rounded-2xl shadow-lg p-8">
+          <div className="bg-white rounded-2xl  p-8">
             <div className="text-center mb-8">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-full mb-4">
                 <svg className="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -186,7 +186,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
 
         {/* Privacy & Security Section */}
         <section className="mb-16">
-          <div className="bg-gradient-to-r from-green-500 to-teal-600 rounded-2xl shadow-lg p-8 text-white">
+          <div className="bg-white rounded-2xl shadow-lg p-8">
             <div className="text-center mb-8">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-white bg-opacity-20 rounded-full mb-4">
                 <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -194,7 +194,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                 </svg>
               </div>
               <h2 className="text-2xl font-bold mb-4">Privacy & Security</h2>
-              <p className="text-green-100 max-w-2xl mx-auto">Your data security and privacy are our top priorities. We implement industry-leading protection measures.</p>
+              <p className=" max-w-2xl mx-auto">Your data security and privacy are our top priorities. We implement industry-leading protection measures.</p>
             </div>
             
             <div className="grid md:grid-cols-3 gap-8">
@@ -205,7 +205,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Confidentiality Guaranteed</h3>
-                <p className="text-green-100">Only authorized experts can access your files.</p>
+                <p className="">Only authorized experts can access your files.</p>
               </div>
               
               <div className="text-center">
@@ -215,7 +215,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Encrypted Storage</h3>
-                <p className="text-green-100">Advanced encryption ensures complete safety.</p>
+                <p className="">Advanced encryption ensures complete safety.</p>
               </div>
               
               <div className="text-center">
@@ -225,7 +225,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Limited Access</h3>
-                <p className="text-green-100">Files are never shared without consent.</p>
+                <p className="">Files are never shared without consent.</p>
               </div>
             </div>
           </div>
@@ -233,7 +233,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
 
         {/* Terms of Use Section */}
         <section className="mb-16">
-          <div className="bg-white rounded-2xl shadow-lg p-8">
+          <div className="bg-white rounded-2xl  p-8">
             <div className="text-center mb-8">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-yellow-100 rounded-full mb-4">
                 <svg className="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -298,7 +298,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
 
         {/* Why Scholars Trust Us Section */}
         <section className="mb-16">
-          <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl shadow-lg p-8 text-white">
+          <div className="bg-white rounded-2xl shadow-lg p-8 ">
             <div className="text-center mb-8">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-white bg-opacity-20 rounded-full mb-4">
                 <svg className="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -306,7 +306,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                 </svg>
               </div>
               <h2 className="text-2xl font-bold mb-4">Why Scholars Trust Us</h2>
-              <p className="text-purple-100 max-w-2xl mx-auto">Join thousands of successful scholars who have achieved their academic goals with our expert support and guidance.</p>
+              <p className=" max-w-2xl mx-auto">Join thousands of successful scholars who have achieved their academic goals with our expert support and guidance.</p>
             </div>
             
             <div className="grid md:grid-cols-3 gap-8">
@@ -317,7 +317,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Expert Team</h3>
-                <p className="text-purple-100">Experienced researchers, writers, and academic professionals.</p>
+                <p className="">Experienced researchers, writers, and academic professionals.</p>
               </div>
               
               <div className="text-center">
@@ -327,7 +327,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Proven Track Record</h3>
-                <p className="text-purple-100">Hundreds of successful thesis completions worldwide.</p>
+                <p className="">Hundreds of successful thesis completions worldwide.</p>
               </div>
               
               <div className="text-center">
@@ -337,14 +337,14 @@ const FileUploadInfo = ({ setReadInfo }) => {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Secure & Transparent</h3>
-                <p className="text-purple-100">Clear communication and total confidentiality at every step.</p>
+                <p className="">Clear communication and total confidentiality at every step.</p>
               </div>
             </div>
           </div>
         </section>
         {/* FAQ Section */}
         <section className="mb-16">
-      <div className="bg-white rounded-2xl shadow-lg p-8">
+      <div className="bg-white rounded-2xl  p-8">
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-amber-100 rounded-full mb-4">
             <svg

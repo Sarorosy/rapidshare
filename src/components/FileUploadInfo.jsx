@@ -141,7 +141,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
 
         {/* Privacy & Security Section */}
         <section className="mb-16">
-          <div className="bg-white rounded-2xl shadow-lg p-8">
+          <div className="bg-white rounded-2xl  p-8">
             <div className="text-center mb-8">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-full mb-4">
                 <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -303,7 +303,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
 
         {/* Call to Action */}
         <section className="text-center">
-          <div className="bg-white rounded-2xl shadow-lg p-12">
+          <div className="bg-white rounded-2xl p-12">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#4bb536] to-[#35a905] rounded-full mb-6">
               <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />

@@ -304,7 +304,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
         {/* Call to Action */}
         <section className="text-center">
           <div className="bg-white rounded-2xl shadow-lg p-12">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mb-6">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#4bb536] to-[#35a905] rounded-full mb-6">
               <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
               </svg>
@@ -316,7 +316,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
             <div  ref={bottomRef}>
             <button 
               onClick={() => { setReadInfo(true); }} 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-xl font-semibold text-[15px] shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200"
+              className="bg-gradient-to-r from-[#4bb536] to-[#35a905] text-white px-4 py-2 rounded-xl font-semibold text-[15px] shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200"
             >
               Upload Your Files Now
             </button>

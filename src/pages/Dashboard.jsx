@@ -60,6 +60,8 @@ const Dashboard = () => {
       return toast.error("No files to upload.");
     }
 
+    
+
     const formData = new FormData();
     files.forEach((item, index) => {
       formData.append("files[]", item.file);
@@ -92,6 +94,7 @@ const Dashboard = () => {
       toast.error("Upload failed. Please try again.");
     } finally {
       setIsUploading(false);
+      setReadInfo(true);
     }
   };
 
@@ -137,14 +140,15 @@ const Dashboard = () => {
     }
   };
 
-  if(!readInfo){
-    return <FileUploadInfo setReadInfo={setReadInfo} />
-  }
+  // if(!readInfo){
+  //   return <FileUploadInfo setReadInfo={setReadInfo} />
+  // }
 
   return (
-    <div className="row min-h-full">
-      <div className="col-md-7 flex flex-col gap-4">
-        <GetFilesHistory
+    <div className={`${!readInfo ? "flex flex-col-reverse w-full mx-auto" : "row"} min-h-full`}>
+      <div className={`${!readInfo ? "" : "col-md-7 flex flex-col gap-4"} `}>
+        {(!readInfo) ? (<FileUploadInfo setReadInfo={setReadInfo} />) : 
+        (<GetFilesHistory
           userId={user?.id}
           fetchFiles={fetchFiles}
           loading={loading}
@@ -153,11 +157,26 @@ const Dashboard = () => {
           handleFolderClick={handleFolderClick}
           selectedFolderName={selectedFolderName}
           selectedFolderId={selectedFolderId}
-        />
+        />)}
       </div>
 
-      <div className="col-md-5">
-        <div className="bg-white rounded shadow-sm sticky top-0  p-3">
+      <div  className={`${!readInfo ? "bg-green-50 text-center px-4 py-[100px] flex flex-col justify-center items-center" : "col-md-5"} `}>
+          {!readInfo && (
+            <div className="mb-4">
+           <h1 className="text-[25px] font-bold mb-3">
+          Welcome to the <span  className="text-green-600">File Upload Portal</span>
+        </h1>
+        <p className="text-gray-600 text-[15px] px-[100px]">
+          We understand that your thesis and research files are valuable and
+          confidential. Our platform is designed to make your experience secure,
+          simple, and trustworthy. Here's everything you need to know before
+          uploading your documents.
+        </p>
+          
+          </div>
+          
+          )}
+        <div className={`${!readInfo ? "bg-white rounded shadow-sm sticky top-0  p-3 w-[400px]" : "bg-white rounded shadow-sm sticky top-0  p-3"} `}>
           <h1 className="select-none f-16 font-semibold mb-3 flex items-center">
             Upload Files{" "}
           </h1>

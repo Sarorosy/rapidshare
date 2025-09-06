@@ -13,7 +13,7 @@ export default function UserLayout() {
         className="flex-grow w-full overflow-y-auto"
         id="scroll-container"
       >
-        <div className="container m-0 max-w-[100%]">
+        <div className=" m-0 max-w-[100%]">
           <Outlet />
         </div>
       </main>

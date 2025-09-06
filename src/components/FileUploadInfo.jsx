@@ -252,7 +252,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
         </section>
 
         {/* Why Scholars Trust Us Section */}
-        <section className="mb-16">
+        {/* <section className="mb-16">
           <div className="bg-white rounded-2xl shadow-lg p-8 ">
             <div className="text-center mb-8">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-full mb-4">
@@ -296,7 +296,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
         
 
         

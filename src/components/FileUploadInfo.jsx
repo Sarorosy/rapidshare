@@ -32,21 +32,21 @@ const FileUploadInfo = ({ setReadInfo }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen text-[14px]">
       
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="">
         
         {/* Why We Need Your Files Section */}
-        <section className="mb-16">
-          <div className="bg-white rounded-2xl  p-8">
+        <section className="bg-white">
+          <div className="max-w-7xl mx-auto rounded-2xl p-10 py-12 ">
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 rounded-full mb-4">
                 <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Why We Need Your Files</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-3">Why We Need Your Files</h2>
               <p className="text-gray-600 max-w-2xl mx-auto">Understanding your work thoroughly allows us to provide the most effective and personalized assistance for your academic journey.</p>
             </div>
             
@@ -57,7 +57,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Personalized Assistance</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Personalized Assistance</h3>
                 <p className="text-gray-600">Helps our team understand your work thoroughly to provide tailored guidance.</p>
               </div>
               
@@ -65,7 +65,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 rounded-full mb-4">
                   <FileCheck2 className="text-purple-600 w-6 h-6 " />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Accurate Feedback & Support</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Accurate Feedback & Support</h3>
                 <p className="text-gray-600">Enables precise suggestions, corrections, and improvements without compromising originality.</p>
               </div>
               
@@ -75,7 +75,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Streamlined Collaboration</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Streamlined Collaboration</h3>
                 <p className="text-gray-600">Collaborate with multiple experts without unnecessary back-and-forth, saving time.</p>
               </div>
             </div>
@@ -83,20 +83,20 @@ const FileUploadInfo = ({ setReadInfo }) => {
         </section>
 
         {/* How to Use Section */}
-        <section className="mb-16">
-          <div className="bg-white rounded-2xl  p-8">
+        <section className="">
+          <div className="max-w-7xl mx-auto rounded-2xl p-10 py-12 ">
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-full mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-indigo-100 rounded-full mb-4">
                 <svg className="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                 </svg>
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">How to Use the Upload Platform</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-3">How to Use the Upload Platform</h2>
               <p className="text-gray-600 max-w-2xl mx-auto">Follow these simple steps to securely upload your files and get started with our expert assistance.</p>
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-              <div className="bg-gray-50 rounded-xl p-6 text-center">
+              <div className="bg-white rounded-xl p-6 text-center">
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 rounded-full mb-4">
                   <span className="text-blue-600 font-bold">1</span>
                 </div>
@@ -104,7 +104,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                 <p className="text-sm text-gray-600">Choose your documents (PDF, DOCX, XLSX, PPTX, images, etc).</p>
               </div>
               
-              <div className="bg-gray-50 rounded-xl p-6 text-center">
+              <div className="bg-white rounded-xl p-6 text-center">
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-full mb-4">
                   <span className="text-green-600 font-bold">2</span>
                 </div>
@@ -112,7 +112,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                 <p className="text-sm text-gray-600">Rename your file if needed before uploading (Optional).</p>
               </div>
               
-              <div className="bg-gray-50 rounded-xl p-6 text-center">
+              <div className="bg-white rounded-xl p-6 text-center">
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 rounded-full mb-4">
                   <span className="text-purple-600 font-bold">3</span>
                 </div>
@@ -120,7 +120,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                 <p className="text-sm text-gray-600">Choose how long the file will be accessible (7, 15, 30, or 60 days).</p>
               </div>
               
-              <div className="bg-gray-50 rounded-xl p-6 text-center">
+              <div className="bg-white rounded-xl p-6 text-center">
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-orange-100 rounded-full mb-4">
                   <span className="text-orange-600 font-bold">4</span>
                 </div>
@@ -128,7 +128,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                 <p className="text-sm text-gray-600">Click 'Upload' to send files encrypted for your protection.</p>
               </div>
               
-              <div className="bg-gray-50 rounded-xl p-6 text-center">
+              <div className="bg-white rounded-xl p-6 text-center">
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-red-100 rounded-full mb-4">
                   <span className="text-red-600 font-bold">5</span>
                 </div>
@@ -140,15 +140,15 @@ const FileUploadInfo = ({ setReadInfo }) => {
         </section>
 
         {/* Privacy & Security Section */}
-        <section className="mb-16">
-          <div className="bg-white rounded-2xl  p-8">
+        <section className="bg-white">
+          <div className="max-w-7xl mx-auto rounded-2xl p-10 py-12 ">
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-full mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-gray-100 rounded-full mb-4">
                 <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-              <h2 className="text-2xl font-bold mb-4">Privacy & Security</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-3">Privacy & Security</h2>
               <p className=" max-w-2xl mx-auto">Your data security and privacy are our top priorities. We implement industry-leading protection measures.</p>
             </div>
             
@@ -159,7 +159,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Confidentiality Guaranteed</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Confidentiality Guaranteed</h3>
                 <p className="">Only authorized experts can access your files.</p>
               </div>
               
@@ -169,7 +169,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Encrypted Storage</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Encrypted Storage</h3>
                 <p className="">Advanced encryption ensures complete safety.</p>
               </div>
               
@@ -179,7 +179,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Limited Access</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Limited Access</h3>
                 <p className="">Files are never shared without consent.</p>
               </div>
             </div>
@@ -187,20 +187,20 @@ const FileUploadInfo = ({ setReadInfo }) => {
         </section>
 
         {/* Terms of Use Section */}
-        <section className="mb-16">
-          <div className="bg-white rounded-2xl  p-8">
+        <section className="">
+          <div className="max-w-7xl mx-auto rounded-2xl p-10 py-12 ">
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-yellow-100 rounded-full mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-yellow-100 rounded-full mb-4">
                 <svg className="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Terms of Use</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-3">Terms of Use</h2>
               <p className="text-gray-600 max-w-2xl mx-auto">Please review these important guidelines to ensure the best experience and maintain academic integrity.</p>
             </div>
             
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="flex items-start space-x-4">
+              <div className="flex items-start space-x-4 bg-white p-3 rounded">
                 <div className="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
                   <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -212,7 +212,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                 </div>
               </div>
               
-              <div className="flex items-start space-x-4">
+              <div className="flex items-start space-x-4 bg-white p-3 rounded">
                 <div className="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
                   <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
@@ -224,7 +224,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                 </div>
               </div>
               
-              <div className="flex items-start space-x-4">
+              <div className="flex items-start space-x-4 bg-white p-3 rounded">
                 <div className="flex-shrink-0 w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
                   <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -236,7 +236,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                 </div>
               </div>
               
-              <div className="flex items-start space-x-4">
+              <div className="flex items-start space-x-4 bg-white p-3 rounded">
                 <div className="flex-shrink-0 w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
                   <svg className="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -255,12 +255,12 @@ const FileUploadInfo = ({ setReadInfo }) => {
         {/* <section className="mb-16">
           <div className="bg-white rounded-2xl shadow-lg p-8 ">
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-full mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-gray-100 rounded-full mb-4">
                 <svg className="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                 </svg>
               </div>
-              <h2 className="text-2xl font-bold mb-4">Why Scholars Trust Us</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-3">Why Scholars Trust Us</h2>
               <p className=" max-w-2xl mx-auto">Join thousands of successful scholars who have achieved their academic goals with our expert support and guidance.</p>
             </div>
             
@@ -271,7 +271,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Expert Team</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Expert Team</h3>
                 <p className="">Experienced researchers, writers, and academic professionals.</p>
               </div>
               
@@ -281,7 +281,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Proven Track Record</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Proven Track Record</h3>
                 <p className="">Hundreds of successful thesis completions worldwide.</p>
               </div>
               
@@ -291,7 +291,7 @@ const FileUploadInfo = ({ setReadInfo }) => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Secure & Transparent</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Secure & Transparent</h3>
                 <p className="">Clear communication and total confidentiality at every step.</p>
               </div>
             </div>
@@ -303,20 +303,20 @@ const FileUploadInfo = ({ setReadInfo }) => {
 
         {/* Call to Action */}
         <section className="text-center">
-          <div className="bg-white rounded-2xl p-12">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#4bb536] to-[#35a905] rounded-full mb-6">
-              <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="border border-gray-200 bg-white p-8">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#4bb536] to-[#35a905] rounded-full mb-4">
+              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
               </svg>
             </div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Ready to Get Started?</h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            <h2 className="text-2xl font-bold text-gray-900 mb-3">Ready to Get Started?</h2>
+            <p className=" text-gray-600 mb-6 max-w-3xl mx-auto">
               Your work is precious, and so is your trust. Upload your files confidently and let us help you achieve academic excellence.
             </p>
             <div  ref={bottomRef}>
             <button 
               onClick={() => { setReadInfo(true); }} 
-              className="bg-gradient-to-r from-[#4bb536] to-[#35a905] text-white px-4 py-2 rounded-xl font-semibold text-[15px] shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200"
+              className="bg-gradient-to-r from-[#4bb536] to-[#35a905] text-white px-3 py-1.5 rounded font-semibold text-[14px] shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200"
             >
               Upload Your Files Now
             </button>

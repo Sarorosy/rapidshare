@@ -177,7 +177,7 @@ const Dashboard = () => {
           
           )}
         <div className={`${!readInfo ? "bg-white rounded shadow-sm sticky top-0  p-3 w-[400px]" : "bg-white rounded shadow-sm sticky top-0  p-3"} `}>
-          <h1 className="select-none f-16 font-semibold mb-3 flex items-center">
+          <h1 className={`${!readInfo ? "hidden" : "select-none f-16 font-semibold mb-3 flex items-center"} `}>
             Upload Files{" "}
           </h1>
           {selectedFolderName && (

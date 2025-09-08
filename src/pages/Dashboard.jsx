@@ -160,7 +160,7 @@ const Dashboard = () => {
         />)}
       </div>
 
-      <div  className={`${!readInfo ? "bg-green-50 text-center px-4 py-[60px] flex flex-col justify-center items-center" : "col-md-5"} `}>
+      <div  className={`${!readInfo ? "bg-green-50 text-center px-4 py-[30px] flex flex-col justify-center items-center" : "col-md-5"} `}>
           {!readInfo && (
             <div className="mb-4">
            <h1 className="text-[25px] font-bold mb-3">
@@ -191,7 +191,7 @@ const Dashboard = () => {
           <div
             onDrop={handleDrop}
             onDragOver={(e) => e.preventDefault()}
-            className="border-4 border-dashed border-gray-300 rounded-xl p-4 text-center cursor-pointer hover:bg-gray-50 transition"
+            className={`${!readInfo ? "p-2" : "p-4"} border-4 border-dashed border-gray-300 rounded-xl text-center cursor-pointer hover:bg-gray-50 transition `}
             onClick={() => document.getElementById("fileInput").click()}
           >
             <UploadCloud className="mx-auto text-[#092e46] mb-2" size={25} />

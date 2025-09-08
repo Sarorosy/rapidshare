@@ -50,7 +50,7 @@ function AutoLoginWrapper({ children }) {
 
 export default function AppRouter() {
   return (
-    <Router > 
+    <Router basename="/rapidshare"> 
       <ScrollToTop />
       <AutoLoginWrapper>
       <Routes>

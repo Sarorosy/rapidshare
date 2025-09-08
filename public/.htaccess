@@ -10,6 +10,6 @@
 # ADD IN .HTACCESS FILE rapidshare
 Options -MultiViews
 RewriteEngine On
-RewriteBase /
+RewriteBase /rapidshare
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.html [QSA,L]

@@ -160,7 +160,7 @@ const Dashboard = () => {
         />)}
       </div>
 
-      <div  className={`${!readInfo ? "bg-green-50 text-center px-4 py-[100px] flex flex-col justify-center items-center" : "col-md-5"} `}>
+      <div  className={`${!readInfo ? "bg-green-50 text-center px-4 py-[60px] flex flex-col justify-center items-center" : "col-md-5"} `}>
           {!readInfo && (
             <div className="mb-4">
            <h1 className="text-[25px] font-bold mb-3">
